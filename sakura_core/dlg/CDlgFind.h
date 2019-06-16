@@ -21,6 +21,8 @@
 #include "recent/CRecentSearch.h"
 #include "util/window.h"
 
+class CEditView;
+
 /*-----------------------------------------------------------------------
 クラスの宣言
 -----------------------------------------------------------------------*/
@@ -38,6 +40,7 @@ public:
 	HWND DoModeless(HINSTANCE hInstance, HWND hwndParent, LPARAM lParam);	/* モードレスダイアログの表示 */
 
 	void ChangeView(LPARAM pcEditView);
+	static void SetColorMarkerSearch(CDialog* this_, CEditView* pcEditView, BOOL bAutoClose);
 
 	SSearchOption m_sSearchOption;	// 検索オプション
 	int		m_bNOTIFYNOTFOUND;	// 検索／置換  見つからないときメッセージを表示

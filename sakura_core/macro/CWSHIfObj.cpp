@@ -162,12 +162,12 @@ HRESULT CWSHIfObj::MacroCommand(int IntID, DISPPARAMS *Arguments, VARIANT* Resul
 		}
 
 		// 2009.10.29 syat HandleCommandはサブクラスでオーバーライドする
-		HandleCommand(m_pView, ID, const_cast<WCHAR const **>(&StrArgs[0]), &strLengths[0], ArgCount);
+		bool r = HandleCommand(m_pView, ID, const_cast<WCHAR const **>(&StrArgs[0]), &strLengths[0], ArgCount);
 
 		//	Nov. 29, 2005 FILE 配列の破棄なので、[括弧]を追加
 		for(int J = 0; J < ArgCount; ++J)
 			delete [] StrArgs[J];
 
-		return S_OK;
+		return r ? S_OK : E_FAIL; // 2016.03.03 コマンドもエラーで停止するように
 	}
 }

@@ -193,6 +193,7 @@ CEditDoc::CEditDoc(CEditApp* pcApp)
 
 	//$$ CModifyManager インスタンスを生成
 	CModifyManager::getInstance();
+	CColorMarkerManger::getInstance();
 
 	//$$ CCodeChecker インスタンスを生成
 	CCodeChecker::getInstance();

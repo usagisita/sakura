@@ -192,8 +192,8 @@ protected:
 	void DrawColorListItem( DRAWITEMSTRUCT* );				//!< 色種別リスト オーナー描画
 	void EnableTypesPropInput( HWND hwndDlg );				//!< タイプ別設定のカラー設定のON/OFF
 	void RearrangeKeywordSet(HWND hwndDlg);						//!< キーワードセット再配置  Jan. 23, 2005 genta
-	void DrawColorButton(DRAWITEMSTRUCT* pDis, COLORREF cColor);		//!< 色ボタンの描画
 public:
+	static void DrawColorButton(DRAWITEMSTRUCT* pDis, COLORREF cColor);		//!< 色ボタンの描画
 	static BOOL SelectColor(HWND hwndParent, COLORREF* pColor, DWORD* pCustColors);	//!< 色選択ダイアログ
 private:
 };

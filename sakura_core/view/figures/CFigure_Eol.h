@@ -54,4 +54,15 @@ private:
 	HPEN m_hPen = NULL;
 	COLORREF m_clrPen;
 };
+
+class CFigure_Wrap : public CFigureSpace{
+public:
+	//traits
+	bool Match(const wchar_t* pText, int nTextLen) const{ return false; };
+
+	//action
+	bool DrawImp(SColorStrategyInfo* pInfo);
+	void DispSpace(CGraphics& gr, DispPos* pDispPos, CEditView* pcView, bool bTrans) const;
+	EColorIndexType GetColorIdx(void) const{ return COLORIDX_WRAP; }
+};
 #endif /* SAKURA_CFIGURE_EOL_C51A4502_29AE_4D38_8056_5B0CFCC3686B_H_ */

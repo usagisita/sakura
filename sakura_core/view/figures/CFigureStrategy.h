@@ -115,6 +115,7 @@ protected:
 	bool DrawImp_StyleSelect(SColorStrategyInfo* pInfo);
 	void DrawImp_StylePop(SColorStrategyInfo* pInfo);
 	void DrawImp_DrawUnderline(SColorStrategyInfo* pInfo, DispPos&);
+	ColorInfoBase SetColorInfoFromMarker(SColorStrategyInfo* pInfo, const ColorInfoBase&, int);
 
 protected:
 	EColorIndexType m_nDispColorIndex;

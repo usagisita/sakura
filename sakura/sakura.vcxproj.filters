@@ -1093,6 +1093,11 @@
     </ClInclude>
     <ClInclude Include="..\sakura_core\GrepInfo.h">
       <Filter>Cpp Source Files</Filter>
+    <ClInclude Include="..\sakura_core\dlg\CDlgColorMarker.h">
+      <Filter>Cpp Source Files\dlg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sakura_core\docplus\CColorMarker.h">
+      <Filter>Cpp Source Files\docplus</Filter>
     </ClInclude>
     <ClInclude Include="..\sakura_core\util\zoom.h">
       <Filter>Cpp Source Files\util</Filter>
@@ -2281,6 +2286,14 @@
     </ClCompile>
     <ClCompile Include="..\sakura_core\GrepInfo.cpp">
       <Filter>Cpp Source Files</Filter>
+    <ClCompile Include="..\sakura_core\cmd\CViewCommander_ColorMarker.cpp">
+      <Filter>Cpp Source Files\cmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sakura_core\dlg\CDlgColorMarker.cpp">
+      <Filter>Cpp Source Files\dlg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sakura_core\docplus\CColorMarker.cpp">
+      <Filter>Cpp Source Files\docplus</Filter>
     </ClCompile>
     <ClCompile Include="..\sakura_core\util\zoom.cpp">
       <Filter>Cpp Source Files\util</Filter>

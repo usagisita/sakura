@@ -55,6 +55,7 @@ public:
 	int		ReadRuleFile( const WCHAR* pszFilename, SOneRule* pcOneRule,
 						  int nMaxCount, bool& bRegex, std::wstring& title );	//!< ルールファイル読込 2002.04.01 YAZAKI
 	void	MakeFuncList_BookMark( CFuncInfoArr* );								//!< ブックマークリスト作成 //2001.12.03 hor
+	void	MakeFuncList_ColorMarker( CFuncInfoArr* );
 private:
 	CEditDoc* m_pcDocRef;
 };

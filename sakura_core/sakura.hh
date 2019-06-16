@@ -200,6 +200,25 @@
 #define HLP000364	364 //次の関数リストマーク
 #define HLP000365	365 //前の関数リストマーク
 #define HLP000368	368 //ファイルツリー
+#define HLP000377	377 //カラーマーカー設定
+#define HLP000378	378 //カラーマーカー削除
+#define HLP000379	379 //カラーマーカー詳細設定
+#define HLP000380	380 //次のカラーマーカー
+#define HLP000381	381 //前のカラーマーカー
+#define HLP000382	382 //カラーマーカー一覧
+#define HLP000383	383 //カラーマーカー全削除
+#define HLP000384	384 //カラーマーカー読み込み
+#define HLP000385	385 //カラーマーカー書き込み
+#define HLP000386	386 //カラーマーカーセット1
+#define HLP000387	387 //カラーマーカーセット2
+#define HLP000388	388 //カラーマーカーセット3
+#define HLP000389	389 //カラーマーカーセット4
+#define HLP000390	390 //カラーマーカーセット5
+#define HLP000391	391 //カラーマーカーセット6
+#define HLP000392	392 //カラーマーカーセット7
+#define HLP000393	393 //カラーマーカーセット8
+#define HLP000394	394 //カラーマーカーセット9
+#define HLP000395	395 //カラーマーカーセット10
 #define HLP000068	68 //「ツール(T)」メニューの一覧
 #define HLP000069	69 //ツールバーを表示(隠す)
 #define HLP000070	70 //ファンクションキーを表示(隠す)
@@ -1222,5 +1241,30 @@
 #define HIDC_WINLIST_BUTTTN_SAVE			14801
 #define HIDC_WINLIST_BUTTTN_CLOSE			14802
 #define HIDC_WINLIST_IDOK					14803
+
+//カラーマーカー設定
+#define HIDOK_COLORMARKER					15000
+#define HIDCANCEL_COLORMARKER				15001
+#define HIDC_COLORMARKER_BUTTON_HELP		15002
+#define HIDC_COMBO_COLORSET					15003
+#define HIDC_BUTTON_SETCOLOR				15004
+#define HIDC_EDIT_COLORMARKER_LABEL			15005
+#define HIDC_CHECK_COLOR_TEXT				15006
+#define HIDC_CHECK_COLOR_BACK				15007
+#define HIDC_CHECK_ENABLE_BOLD				15008
+#define HIDC_CHECK_ENABLE_UNDERLINE			15009
+#define HIDC_BUTTON_COLOR_TEXT				15010
+#define HIDC_BUTTON_COLOR_BACK				15011
+#define HIDC_CHECK_MARKER_BOLD				15012
+#define HIDC_CHECK_MARKER_UNDERLINE			15013
+#define HIDC_CHECK_GYOU						15014
+#define HIDC_CHECK_LINE						15015
+#define HIDC_EDIT_EXTVALUE					15016
+#define HIDC_EDIT_EXTVALUE2					15017
+#define HIDC_BUTTON_DELCOLOR				15018
+#define HIDC_BUTTON_DELEXTVALUE				15019
+#define HIDC_BUTTON_DELCOLORALL				15020
+#define HIDC_BUTTON_LOADMARKER				15021
+#define HIDC_BUTTON_SAVEMARKER				15022
 
 #define HIDC_STATIC								19999 //不明

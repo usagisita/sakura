@@ -89,5 +89,9 @@ enum maxdata{
 	MAX_MAINMENU				= 500,	// 登録できるメインメニューの数
 	MAX_MAINMENU_TOP			= 20,	// 登録できるメインメニューの数
 	MAX_MAIN_MENU_NAME_LEN		= 40,	// メインメニュー名文字列長
+
+	// マーカー
+	MAX_MARKER_INFO				= 100,	// マーカーの書式化文字列の長さ目安
+	MAX_MARKER_NAME				= 64,
 };
 #endif /* SAKURA_MAXDATA_1620C8E1_EF36_4EC9_9757_D2598E9E2746_H_ */

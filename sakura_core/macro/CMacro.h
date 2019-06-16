@@ -47,6 +47,7 @@ enum EMacroParamType{
 	EMacroParamTypeNull,
 	EMacroParamTypeInt,
 	EMacroParamTypeStr,
+	EMacroParamTypeUInt,
 };
 struct CMacroParam{
 	WCHAR*			m_pData;
@@ -74,8 +75,9 @@ struct CMacroParam{
 		m_nDataLen = 0;
 		m_eType = EMacroParamTypeNull;
 	}
-	void SetStringParam( const WCHAR* szParam, int nLength = -1 );
+	void SetStringParam( const WCHAR* szParam, int nLength = -1, EMacroParamType eType = EMacroParamTypeStr );
 	void SetIntParam( const int nParam );
+	void SetUIntParam( const UINT nParam );
 };
 
 /*! @brief キーボードマクロの1コマンド
@@ -112,6 +114,7 @@ public:
 	void AddLParam( const LPARAM* lParam, const CEditView* pcEditView  );	//@@@ 2002.2.2 YAZAKI pcEditViewも渡す
 	void AddStringParam( const WCHAR* szParam, int nLength = -1 );
 	void AddIntParam( const int nParam );
+	void AddUIntParam( const UINT nParam );
 	int GetParamCount() const;
 
 	static bool HandleCommand( CEditView *View, EFunctionCode ID, const WCHAR* Argument[], const int ArgLengths[], const int ArgSize );
@@ -123,6 +126,7 @@ public:
 	*/
 protected:
 	static WCHAR* GetParamAt(CMacroParam*, int);
+	void AddMacroParamList(CMacroParam*);
 
 	/*
 	||  実装ヘルパ関数

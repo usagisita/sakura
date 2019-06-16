@@ -156,11 +156,12 @@ protected:
 	void CreateSizeBox( void );
 	BOOL OnCommand(WPARAM wParam, LPARAM lParam);
 
-	HWND GetItemHwnd(int nID){ return ::GetDlgItem( GetHwnd(), nID ); }
-
 	// コントロールに画面のフォントを設定	2012/11/27 Uchi
 	HFONT SetMainFont( HWND hTarget );
 	// このダイアログに設定されているフォントを取得
 	HFONT GetDialogFont() { return m_hFontDialog; }
+
+public:
+	HWND GetItemHwnd(int nID){ return ::GetDlgItem( GetHwnd(), nID ); }
 };
 #endif /* SAKURA_CDIALOG_17C8C15C_881C_4C1F_B953_CB11FCC8B70B_H_ */

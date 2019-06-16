@@ -35,6 +35,7 @@
 #define IDD_SETCHARSET                  139
 #define IDD_GREP_REPLACE                140
 #define IDD_WINLIST                     141
+#define IDD_COLORMARKER                 142
 #define IDB_MYTOOL                      200
 #define IDB_SCROLL_CENTER               201
 #define IDB_SCROLL_VERTICAL             202
@@ -792,6 +793,25 @@
 #define IDC_COMBO_EXCLUDE_FILE          1735
 #define IDC_UPDOWN_BACKIMG_TRANSPARENCY 1736
 #define IDC_CHECK_VISTA_STYLE_FILEDIALOG 1737
+#define IDC_COMBO_COLORSET              1738
+#define IDC_BUTTON_SETCOLOR             1739
+#define IDC_CHECK_COLOR_TEXT            1740
+#define IDC_CHECK_COLOR_BACK            1741
+#define IDC_CHECK_ENABLE_BOLD           1742
+#define IDC_CHECK_ENABLE_UNDERLINE      1743
+#define IDC_BUTTON_COLOR_TEXT           1744
+#define IDC_BUTTON_COLOR_BACK           1745
+#define IDC_CHECK_GYOU                  1746
+#define IDC_CHECK_LINE                  1747
+#define IDC_EDIT_EXTVALUE               1748
+#define IDC_EDIT_EXTVALUE2              1749
+#define IDC_BUTTON_DELCOLOR             1750
+#define IDC_BUTTON_DELEXTVALUE          1751
+#define IDC_BUTTON_DELCOLORALL          1752
+#define IDC_BUTTON_LOADMARKER           1753
+#define IDC_BUTTON_SAVEMARKER           1754
+#define IDC_BUTTON_MARKER               1755
+#define IDC_COMBO_STYLE1                1756
 #define IDS_AUTHOR_PAGE                 4054
 #define IDS_ABOUT_DESCRIPTION           4056
 #define IDD_TYPELIST                    5000
@@ -834,7 +854,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        5224
 #define _APS_NEXT_COMMAND_VALUE         101
-#define _APS_NEXT_CONTROL_VALUE         1738
+#define _APS_NEXT_CONTROL_VALUE         1757
 #define _APS_NEXT_SYMED_VALUE           10000
 #endif
 #endif

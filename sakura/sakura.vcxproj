@@ -354,6 +354,7 @@
     <ClInclude Include="..\sakura_core\dlg\CDialog.h" />
     <ClInclude Include="..\sakura_core\dlg\CDlgAbout.h" />
     <ClInclude Include="..\sakura_core\dlg\CDlgCancel.h" />
+    <ClInclude Include="..\sakura_core\dlg\CDlgColorMarker.h" />
     <ClInclude Include="..\sakura_core\dlg\CDlgCompare.h" />
     <ClInclude Include="..\sakura_core\dlg\CDlgCtrlCode.h" />
     <ClInclude Include="..\sakura_core\dlg\CDlgDiff.h" />
@@ -377,6 +378,7 @@
     <ClInclude Include="..\sakura_core\dlg\CDlgWindowList.h" />
     <ClInclude Include="..\sakura_core\dlg\CDlgWinSize.h" />
     <ClInclude Include="..\sakura_core\docplus\CBookmarkManager.h" />
+    <ClInclude Include="..\sakura_core\docplus\CColorMarker.h" />
     <ClInclude Include="..\sakura_core\docplus\CDiffManager.h" />
     <ClInclude Include="..\sakura_core\docplus\CFuncListManager.h" />
     <ClInclude Include="..\sakura_core\docplus\CModifyManager.h" />
@@ -657,6 +659,7 @@
     <ClCompile Include="..\sakura_core\cmd\CViewCommander.cpp" />
     <ClCompile Include="..\sakura_core\cmd\CViewCommander_Bookmark.cpp" />
     <ClCompile Include="..\sakura_core\cmd\CViewCommander_Clipboard.cpp" />
+    <ClCompile Include="..\sakura_core\cmd\CViewCommander_ColorMarker.cpp" />
     <ClCompile Include="..\sakura_core\cmd\CViewCommander_Convert.cpp" />
     <ClCompile Include="..\sakura_core\cmd\CViewCommander_Cursor.cpp" />
     <ClCompile Include="..\sakura_core\cmd\CViewCommander_CustMenu.cpp" />
@@ -714,6 +717,7 @@
     <ClCompile Include="..\sakura_core\dlg\CDialog.cpp" />
     <ClCompile Include="..\sakura_core\dlg\CDlgAbout.cpp" />
     <ClCompile Include="..\sakura_core\dlg\CDlgCancel.cpp" />
+    <ClCompile Include="..\sakura_core\dlg\CDlgColorMarker.cpp" />
     <ClCompile Include="..\sakura_core\dlg\CDlgCompare.cpp" />
     <ClCompile Include="..\sakura_core\dlg\CDlgCtrlCode.cpp" />
     <ClCompile Include="..\sakura_core\dlg\CDlgDiff.cpp" />
@@ -739,6 +743,7 @@
     <ClCompile Include="..\sakura_core\dlg\CDlgWindowList.cpp" />
     <ClCompile Include="..\sakura_core\dlg\CDlgWinSize.cpp" />
     <ClCompile Include="..\sakura_core\docplus\CBookmarkManager.cpp" />
+    <ClCompile Include="..\sakura_core\docplus\CColorMarker.cpp" />
     <ClCompile Include="..\sakura_core\docplus\CDiffManager.cpp" />
     <ClCompile Include="..\sakura_core\docplus\CFuncListManager.cpp" />
     <ClCompile Include="..\sakura_core\docplus\CModifyManager.cpp" />
