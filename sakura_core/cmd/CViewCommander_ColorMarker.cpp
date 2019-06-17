@@ -90,7 +90,7 @@ void CViewCommander::Command_SETCOLORMARKER(const CMarkerItem& marker)
 			return; // 未選択
 		}
 	}
-	CLayoutRange rgSelect = GetSelect();
+	const CLayoutRange rgSelect = GetSelect();
 	if( m_pCommanderView->GetSelectionInfo().IsBoxSelecting() ){
 		CLayoutRect rcSelect;
 		TwoPointToRect(&rcSelect, rgSelect.GetFrom(), rgSelect.GetTo());
@@ -114,11 +114,8 @@ void CViewCommander::Command_SETCOLORMARKER(const CMarkerItem& marker)
 			}
 		}
 	}else{
-		CLayoutRect rc;
-		TwoPointToRect(&rc, rgSelect.GetFrom(), rgSelect.GetTo());
-		CLayoutRange rgFixedSelect(CLayoutPoint(rc.left, rc.top), CLayoutPoint(rc.right, rc.bottom));
 		CLogicRange rgLogicRange;
-		GetDocument()->m_cLayoutMgr.LayoutToLogic(rgFixedSelect, &rgLogicRange);
+		GetDocument()->m_cLayoutMgr.LayoutToLogic(rgSelect, &rgLogicRange);
 		const CLogicYInt nBegin = rgLogicRange.GetFrom().y;
 		const CLogicYInt nEnd = rgLogicRange.GetTo().y;
 		CLogicYInt nEnd2 = nEnd;
@@ -367,11 +364,8 @@ void CViewCommander::Command_DELCOLORMARKER(void)
 			rgSelect.SetFrom(GetCaret().GetCaretLayoutPos());
 			rgSelect.SetTo(GetCaret().GetCaretLayoutPos());
 		}
-		CLayoutRect rc;
-		TwoPointToRect(&rc, rgSelect.GetFrom(), rgSelect.GetTo());
-		CLayoutRange rgFixedSelect(CLayoutPoint(rc.left, rc.top), CLayoutPoint(rc.right, rc.bottom));
 		CLogicRange rgLogicRange;
-		GetDocument()->m_cLayoutMgr.LayoutToLogic(rgFixedSelect, &rgLogicRange);
+		GetDocument()->m_cLayoutMgr.LayoutToLogic(rgSelect, &rgLogicRange);
 		const CLogicYInt nBegin = rgLogicRange.GetFrom().y;
 		const CLogicYInt nEnd = rgLogicRange.GetTo().y;
 		CLogicYInt nEnd2 = nEnd;
