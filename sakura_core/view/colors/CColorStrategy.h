@@ -86,10 +86,16 @@ struct CColor3Setting {
 	EColorIndexType eColorIndex2;   //!< 選択以外の現在の色
 	EColorIndexType eColorIndexBg;  //!< 背景色
 	bool bEnableMarker;
+	bool bEnableMarkerLine;
 	CMarkerItem cMarker;
+	CMarkerItem cMarkerLine;
 	void InitMarker(){
 		bEnableMarker = false;
 		InitMarker(cMarker);
+	}
+	void InitMarkerLine() {
+		bEnableMarkerLine = false;
+		InitMarker(cMarkerLine);
 	}
 	static void InitMarker(CMarkerItem& marker){
 		marker.m_nBegin = 0;
@@ -144,7 +150,9 @@ struct SColorStrategyInfo{
 	EColorIndexType GetCurrentColor2() const { return m_cIndex.eColorIndex2; }
 	EColorIndexType GetCurrentColorBg() const{ return m_cIndex.eColorIndexBg; }
 	bool GetEnableMarker() const{ return m_cIndex.bEnableMarker; }
+	bool GetEnableMarkerLine() const { return m_cIndex.bEnableMarkerLine; }
 	const CMarkerItem& GetMarkerItem() const{ return m_cIndex.cMarker; }
+	const CMarkerItem& GetMarkerItemLine() const{ return m_cIndex.cMarkerLine; }
 
 	//! 現在のスキャン位置
 	CLogicInt GetPosInLogic() const

@@ -155,12 +155,59 @@ bool CFigure_Eol::DrawImp(SColorStrategyInfo* pInfo)
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- //
 
 // 折り返し描画
+ColorInfoBase CFigure_Wrap::SetColorInfoFromMarkerLine(SColorStrategyInfo* pInfo, const ColorInfoBase& colorBase)
+{
+	ColorInfoBase color = colorBase;
+	if( pInfo->GetEnableMarkerLine() ){
+		const CMarkerItem& marker = pInfo->GetMarkerItemLine();
+		if( marker.IsBoldSet() ){
+			color.m_sFontAttr.m_bBoldFont = marker.IsBold();
+		}
+		if( marker.IsUnderLineSet() ){
+			color.m_sFontAttr.m_bUnderLine = marker.IsUnderLine();
+		}
+		if( marker.m_cTEXT != -1 ){
+			color.m_sColorAttr.m_cTEXT = marker.m_cTEXT;
+		}
+		if( marker.m_cBACK != -1 ){
+			color.m_sColorAttr.m_cBACK = marker.m_cBACK;
+		}
+	}
+	return color;
+}
+
+
+// 折り返し描画
 bool CFigure_Wrap::DrawImp(SColorStrategyInfo* pInfo){
-	// 1文字進んでしまうので戻す
+	CEditView* pcView = pInfo->m_pcView;
+
+	// CFigureSpace::DrawImp_StyleSelectもどき。選択・検索色を優先する
+	const ColorInfoBase& colorText = GetColorInfo(m_pTypeData, COLORIDX_TEXT);				// テキストの指定色
+	const ColorInfoBase& colorSpace = GetColorInfo(m_pTypeData, GetDispColorIdx());	// 「折り返し記号」の指定色
+	const ColorInfoBase& colorBg = GetColorInfo(m_pTypeData, pInfo->GetCurrentColorBg());
+	const COLORREF crTextBack = colorText.GetBackColor();
+
+	ColorInfoBase colorType3 = SetColorInfoFromMarkerLine(pInfo, colorSpace); // 行背景は適用
+	const ColorInfoBase& colorType4 = (colorType3.GetBackColor() == crTextBack ? colorBg: colorType3);
+	const bool bText = colorSpace.GetTextColor() == colorText.GetTextColor();
+	const bool bBack = colorSpace.GetBackColor() == crTextBack;
+	COLORREF crText = (bText ? &colorType3 : &colorSpace)->GetTextColor();
+	COLORREF crBack = (bBack ? &colorType4 : &colorSpace)->GetBackColor();
+	pInfo->m_gr.PushTextForeColor(crText);
+	pInfo->m_gr.PushTextBackColor(crBack);
+	bool bTrans = pcView->IsBkBitmap() && colorText.GetBackColor() == crBack;
+	SFONT sFont;
+	sFont.m_sFontAttr.m_bBoldFont = colorSpace.IsBoldFont();
+	sFont.m_sFontAttr.m_bUnderLine = colorSpace.HasUnderLine();
+	sFont.m_hFont = pInfo->m_pcView->GetFontset().ChooseFontHandle( 0, sFont.m_sFontAttr );
+	pInfo->m_gr.PushMyFont(sFont);
+
 	CLogicXInt posBk = pInfo->m_nPosInLogic;
-	bool ret = CFigureSpace::DrawImp(pInfo);
+	DispSpace(pInfo->m_gr, pInfo->m_pDispPos, pcView, bTrans);
+	DrawImp_StylePop(pInfo);
 	pInfo->m_nPosInLogic = posBk;
-	return ret;
+
+	return true;
 }
 
 void CFigure_Wrap::DispSpace(CGraphics& gr, DispPos* pDispPos, CEditView* pcView, bool bTrans) const

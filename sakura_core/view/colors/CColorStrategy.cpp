@@ -183,6 +183,26 @@ bool SColorStrategyInfo::CheckChangeColor(const CStringRef& cLineStr)
 			}
 		}
 	}
+	if (this->GetPosInLogic() == 0) {
+		m_cIndex.InitMarkerLine();
+		if (pcDocLine) {
+			const int nCount = CColorMarkerVisitor().GetColorMarkerCount(pcDocLine);
+			if (nCount) {
+				std::vector<const CMarkerItem*> stack;
+				for (int i = 0; i < nCount; i++) {
+					const CMarkerItem& item = *CColorMarkerVisitor().GetColorMarker(pcDocLine, i);
+					if (item.m_nBegin == 0) {
+						if (item.IsLineAll()) {
+							stack.push_back(&item);
+						}
+					} else {
+						break;
+					}
+				}
+				m_cIndex.bEnableMarkerLine = GetMarkerByArray(stack, m_cIndex.cMarkerLine);
+			}
+		}
+	}
 
 	return bChange;
 }

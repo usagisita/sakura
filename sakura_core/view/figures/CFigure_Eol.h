@@ -64,5 +64,7 @@ public:
 	bool DrawImp(SColorStrategyInfo* pInfo);
 	void DispSpace(CGraphics& gr, DispPos* pDispPos, CEditView* pcView, bool bTrans) const;
 	EColorIndexType GetColorIdx(void) const{ return COLORIDX_WRAP; }
+private:
+	ColorInfoBase SetColorInfoFromMarkerLine(SColorStrategyInfo* pInfo, const ColorInfoBase& colorBase);
 };
 #endif /* SAKURA_CFIGURE_EOL_C51A4502_29AE_4D38_8056_5B0CFCC3686B_H_ */
