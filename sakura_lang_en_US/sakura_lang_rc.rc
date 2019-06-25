@@ -4202,7 +4202,7 @@ BEGIN
     STR_DLG_MARKER_CURRENT  "Marker Current"
     STR_DLG_MARKER_COLORSET "Preset %d: %s"
     STR_MARKER_SEARCH       "Marker &Current"
-    STR_MARKER_SEARCH_SET   "Pseset &%d: %s"
+    STR_MARKER_SEARCH_SET   "Preset &%d: %s"
     STR_MARKER_SEARCH_DLG   "Setting Dialog(&E)..."
     STR_MENU_COLORMARKER_SET"Color Marker %d: %s"
     STR_MARKER_TAG_STRING   "Text"
