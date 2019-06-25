@@ -542,9 +542,9 @@ void CDlgFuncList::SetData()
 			//	Apr. 23, 2005 genta 行番号を左端へ
 			ListView_SetColumn( hwndList, FL_COL_NAME, &col );
 			if( OUTLINE_BOOKMARK == m_nListType ){
-				::SetWindowText( GetHwnd(), LS(STR_DLGFNCLST_TITLE_BOOK) );
+				::SetWindowText( GetHwnd(), LS(STR_DLGFNCLST_TITLE_BOOK) );	// ブックマーク
 			}else if( OUTLINE_COLORMARKER == m_nListType ){
-				::SetWindowText( GetHwnd(), LS(STR_CUSTMENU_COLORMARKER) );
+				::SetWindowText( GetHwnd(), LS(STR_CUSTMENU_COLORMARKER) );	// カラーマーカー
 			}
 			break;
 		case OUTLINE_LIST:	// 汎用リスト 2010.03.28 syat

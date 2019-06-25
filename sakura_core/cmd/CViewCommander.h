@@ -256,7 +256,7 @@ public:
 	void Command_COLORMARKER_SAVE(LPCWSTR pszFileName);	//カラーマーカー書き込み
 	BOOL Command_COLORMARKER_SETPRESET(int nIndex, LPCWSTR pszMarker, LPCWSTR pszName);	//カラーマーカープリセット・履歴設定
 
-/* 挿入系 */
+	/* 挿入系 */
 	void Command_INS_DATE( void );	//日付挿入
 	void Command_INS_TIME( void );	//時刻挿入
 	void Command_CtrlCode_Dialog(void);		/* コントロールコードの入力(ダイアログ) */	//@@@ 2002.06.02 MIK
