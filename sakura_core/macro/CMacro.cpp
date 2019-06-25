@@ -164,7 +164,7 @@ void CMacro::AddLParam( const LPARAM* lParams, const CEditView* pcEditView )
 	case F_COLORMARKER_LOAD:
 	case F_COLORMARKER_SAVE:
 		{
-			if( lParam != NULL ){
+			if( lParam != 0 /* NULL */ ){
 				AddStringParam( (const wchar_t*)lParam );	//	lParamを追加。
 			}else{
 				AddStringParam( L"" );
