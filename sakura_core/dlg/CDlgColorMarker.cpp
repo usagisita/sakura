@@ -262,13 +262,11 @@ void CDlgColorMarker::SetDataPreset(void)
 	}
 }
 
-static char nStyleTable[][4] = {
+static char nStyleTable[][2] = {
 	{0, 0},{1, 0},{0, 1},
 	{1, 1},{2, 0},{0, 2},
 	{2, 2},{1, 2},{2, 1},
 };
-#undef BT
-#undef BF
 
 void CDlgColorMarker::SetDataItem(void)
 {
