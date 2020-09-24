@@ -22,6 +22,8 @@
 		3. This notice may not be removed or altered from any source
 		   distribution.
 */
+#ifndef SAKURA_CCOLORMARKER_A3CC3010_E6B4_4469_ABC4_27C99C9789DCI_H_
+#define SAKURA_CCOLORMARKER_A3CC3010_E6B4_4469_ABC4_27C99C9789DCI_H_
 #pragma once
 
 // #include "env/CommonSetting.h" // 先行読み込み
@@ -85,3 +87,4 @@ public:
 	bool StrToMarkerItem2(int nVer, LPCWSTR pszText, CMarkerItem& item);
 	
 };
+#endif /* SAKURA_CCOLORMARKER_A3CC3010_E6B4_4469_ABC4_27C99C9789DCI_H_ */

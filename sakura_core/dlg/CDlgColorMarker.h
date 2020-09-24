@@ -22,6 +22,8 @@
 		3. This notice may not be removed or altered from any source
 		   distribution.
 */
+#ifndef SAKURA_CDLGCOLORMARKER_1C0FF65B_6932_4C8C_B781_201E1888240AD_H_
+#define SAKURA_CDLGCOLORMARKER_1C0FF65B_6932_4C8C_B781_201E1888240AD_H_
 #pragma once
 
 #include "dlg/CDialog.h"
@@ -56,3 +58,4 @@ private:
 public:
 	CMarkerItem m_cItem;
 };
+#endif /* SAKURA_CDLGCOLORMARKER_1C0FF65B_6932_4C8C_B781_201E1888240AD_H_ */
