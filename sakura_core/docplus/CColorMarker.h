@@ -22,8 +22,7 @@
 		3. This notice may not be removed or altered from any source
 		   distribution.
 */
-#ifndef SAKURA_CCOLORMAKER_H_
-#define SAKURA_CCOLORMAKER_H_
+#pragma once
 
 // #include "env/CommonSetting.h" // 先行読み込み
 #include "util/design_template.h" //TSingleton
@@ -86,6 +85,3 @@ public:
 	bool StrToMarkerItem2(int nVer, LPCWSTR pszText, CMarkerItem& item);
 	
 };
-
-#endif /* SAKURA_CCOLORMAKER_H_ */
-/*[EOF]*/

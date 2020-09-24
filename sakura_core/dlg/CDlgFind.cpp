@@ -402,7 +402,7 @@ void CDlgFind::SetColorMarkerSearch(CDialog* this_, CEditView* pcEditView, BOOL 
 	int iPos = 0;
 	::InsertMenu(hMenu, iPos++, MF_BYPOSITION | MF_STRING, MENU_MARKER0, LS(STR_MARKER_SEARCH));
 	for( int i = 0; i < 5; i++ ){
-		TCHAR szLabel[256];
+		WCHAR szLabel[256];
 		const wchar_t *pName = GetDllShareData().m_Common.m_sSearch.m_sColorMarker.m_szSetNames[i];
 		if( L'\0' == pName[0] ){
 			pName = LS(STR_MARKER_PRESET_NAME1 + i);

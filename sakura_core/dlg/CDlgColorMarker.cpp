@@ -64,7 +64,7 @@ const DWORD p_helpids[] = {
 
 static UINT GetExtValue(HWND hwndDlg, int nID)
 {
-	TCHAR szExtValue[100];
+	WCHAR szExtValue[100];
 	szExtValue[0] = L'\0';
 	DlgItem_GetText(hwndDlg, nID, szExtValue, _countof(szExtValue));
 	return (UINT)_tcstoul(szExtValue, NULL, 0); // 基数に0なので0xが付いてると自動で16進数になる
@@ -249,7 +249,7 @@ void CDlgColorMarker::SetDataPreset(void)
 	Combo_AddString(combo, LS(STR_DLG_MARKER_CURRENT));
 	Setting_ColorMarker markerSet = m_pShareData->m_Common.m_sSearch.m_sColorMarker;
 	for( int i = 0; i < _countof(markerSet.m_ColorItems); i++ ){
-		TCHAR szBuf[200];
+		WCHAR szBuf[200];
 		const wchar_t* pName = markerSet.m_szSetNames[i];
 		if( L'\0' == pName[0] ){
 			pName = LS(STR_MARKER_PRESET_NAME1 + i);
@@ -298,8 +298,8 @@ void CDlgColorMarker::SetDataItem(void)
 
 	::InvalidateRect(GetItemHwnd(IDC_BUTTON_COLOR_TEXT), NULL, TRUE);
 	::InvalidateRect(GetItemHwnd(IDC_BUTTON_COLOR_BACK), NULL, TRUE);
-	TCHAR szExtValue[100];
-	auto_sprintf(szExtValue, _T("0x%08x"), m_cItem.m_nExtValue);
+	WCHAR szExtValue[100];
+	auto_sprintf(szExtValue, L"0x%08x", m_cItem.m_nExtValue);
 	DlgItem_SetText( GetHwnd(), IDC_EDIT_EXTVALUE, szExtValue);
 	DlgItem_SetText( GetHwnd(), IDC_EDIT_EXTVALUE2, szExtValue); // 同じ値を設定
 	return;

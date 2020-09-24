@@ -22,9 +22,7 @@
 		3. This notice may not be removed or altered from any source
 		   distribution.
 */
-
-#ifndef SAKURA_CDLGCOLORMAKER_H_
-#define SAKURA_CDLGCOLORMAKER_H_
+#pragma once
 
 #include "dlg/CDialog.h"
 
@@ -58,7 +56,3 @@ private:
 public:
 	CMarkerItem m_cItem;
 };
-
-
-
-#endif // SAKURA_CDLGCOLORMAKER_H_

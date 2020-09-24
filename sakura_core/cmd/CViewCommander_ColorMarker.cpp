@@ -543,13 +543,13 @@ static bool GetSCMFileName(CEditDoc* pcEditDoc, LPCWSTR pszFileName, bool bSave,
 		cDlgOpenFile.Create(
 			G_AppInstance(),
 			pcEditDoc->m_pcEditWnd->GetHwnd(),
-			_T("*.scm"),
+			L"*.scm",
 			CSakuraEnvironment::GetDlgInitialDir().c_str()
 		);
 		auto_strcpy(szPath, pcEditDoc->m_cDocFile.GetFilePath());
 		if( szPath[0] ){
 			if( lstrlen(szPath) + 4 < _countof(szPath) ){
-				auto_strcat(szPath, _T(".scm"));
+				auto_strcat(szPath, L".scm");
 			}
 		}
 		if( bSave ){
