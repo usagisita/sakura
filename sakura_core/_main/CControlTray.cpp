@@ -1143,7 +1143,11 @@ bool CControlTray::OpenNewEditor(
 	}
 
 	if( CCommandLine::getInstance()->IsSetProfile() ){
-		cCmdLineBuf.AppendF( L" -PROF=\"%ls\"", CCommandLine::getInstance()->GetProfileName() );
+		int ret = cCmdLineBuf.AppendF(_TRUNCATE, L" -PROF=\"%ls\"", CCommandLine::getInstance()->GetProfileName() );
+		if( ret < 0 ){
+			ErrorMessage(hWndParent, LS(STR_TRAY_CREATEPROC1), szEXE, CCommandLine::getInstance()->GetProfileName());
+			return false;
+		}
 	}
 
 	// 追加のコマンドラインオプション
@@ -1161,7 +1165,8 @@ bool CControlTray::OpenNewEditor(
 	CResponsefileDeleter respDeleter;
 	if( szCmdLineOption ){
 		// Grepなどで入りきらない場合はレスポンスファイルを利用する
-		if( cCmdLineBuf.max_size() < cCmdLineBuf.size() + wcslen(szCmdLineOption) ){
+		// スペース1文字のために+1する
+		if( cCmdLineBuf.max_size() < cCmdLineBuf.size() + wcslen(szCmdLineOption) + 1 ){
 			WCHAR szIniDir[_MAX_PATH];
 			GetInidir(szIniDir);
 			LPWSTR pszTempFile = _wtempnam(szIniDir, L"skr_resp");
@@ -1171,6 +1176,11 @@ bool CControlTray::OpenNewEditor(
 			}
 			wcscpy(szResponseFile, pszTempFile);
 			free(pszTempFile);
+			int ret = cCmdLineBuf.AppendF(_TRUNCATE, L" -@=\"%s\"", szResponseFile);
+			if( ret < 0 ){
+				ErrorMessage(hWndParent, LS(STR_TRAY_RESPONSEFILE));
+				return false;
+			}
 			CTextOutputStream output(szResponseFile);
 			if( !output ){
 				ErrorMessage(hWndParent, LS(STR_TRAY_RESPONSEFILE));
@@ -1181,9 +1191,13 @@ bool CControlTray::OpenNewEditor(
 			output.WriteString(szCmdLineOption);
 			output.Close();
 			sync = true;
-			cCmdLineBuf.AppendF(L" -@=\"%s\"", szResponseFile);
 		}else{
-			cCmdLineBuf.AppendF(L" %s", szCmdLineOption);
+			int ret = cCmdLineBuf.AppendF(_TRUNCATE, L" %s", szCmdLineOption);
+			if( ret < 0 ){
+				// ここにはこないはず
+				ErrorMessage(hWndParent, LS(STR_TRAY_CREATEPROC1), szEXE, szCmdLineOption);
+				return false;
+			}
 		}
 	}
 	// -- -- -- -- プロセス生成 -- -- -- -- //

@@ -92,6 +92,18 @@ public:
 		m_pHead+=auto_vsprintf_s(m_pHead,_countof(m_szCmdLine)-(m_pHead-m_szCmdLine),szFormat,v);
 		va_end(v);
 	}
+	int AppendF(int _truncate, const WCHAR* szFormat, ...)
+	{
+		assert(_truncate == _TRUNCATE);
+		va_list v;
+		va_start(v,szFormat);
+		int ret = _vsnwprintf_s(m_pHead,_countof(m_szCmdLine)-(m_pHead-m_szCmdLine), _TRUNCATE, szFormat,v);
+		if(0 <= ret){
+			m_pHead += ret;
+		}
+		va_end(v);
+		return ret;
+	}
 	const WCHAR* c_str() const
 	{
 		return m_szCmdLine;
