@@ -118,7 +118,7 @@ bool CShareData_IO::ShareData_IO_2( bool bRead )
 			// Windowsの表示言語が日本語でない場合は言語設定を英語にする
 			if (langId != MAKELANGID( LANG_JAPANESE, SUBLANG_JAPANESE_JAPAN )) {
 				DLLSHAREDATA* pShareData = &GetDllShareData();
-				wcscpy(pShareData->m_Common.m_sWindow.m_szLanguageDll, L"sakura_lang_en_US.dll");
+				wcscpy_fix(pShareData->m_Common.m_sWindow.m_szLanguageDll, L"sakura_lang_en_US.dll");
 				cProfile.IOProfileData(L"Common", L"szLanguageDll", StringBufferW(pShareData->m_Common.m_sWindow.m_szLanguageDll));
 				std::vector<std::wstring> values;
 				pcShare->ConvertLangValues( values, true );
@@ -1080,7 +1080,7 @@ void CShareData_IO::IO_KeyBind( CDataProfile& cProfile, CommonSetting_KeyBind& s
 		if( cProfile.IsReadingMode() ){
 			if (bOldVer) {
 				KEYDATA& keydata = sKeyBind.m_pKeyNameArr[i];
-				wcscpy_s( szKeyName, keydata.m_szKeyName );
+				wcscpy_fix( szKeyName, keydata.m_szKeyName );
 				if( cProfile.IOProfileData(szSecName, szKeyName, StringBufferW(szKeyData)) ){
 					int buf[8];
 					scan_ints( szKeyData, LTEXT("%d,%d,%d,%d,%d,%d,%d,%d"), buf );
@@ -1133,7 +1133,7 @@ void CShareData_IO::IO_KeyBind( CDataProfile& cProfile, CommonSetting_KeyBind& s
 						// 2013.10.23 syat マウスのキーコードを拡張仮想キーコードに変更。以下は互換性のため残す。
 						for( int im=0; im< jpVKEXNamesLen; im++ ){
 							if( wcscmp( tmpKeydata.m_szKeyName, jpVKEXNames[im] ) == 0 ){
-								wcscpy( tmpKeydata.m_szKeyName, sKeyBind.m_pKeyNameArr[im].m_szKeyName );
+								wcscpy_fix( tmpKeydata.m_szKeyName, sKeyBind.m_pKeyNameArr[im].m_szKeyName );
 								sKeyBind.m_pKeyNameArr[im + 0x0100] = tmpKeydata;
 							}
 						}
@@ -1142,12 +1142,12 @@ void CShareData_IO::IO_KeyBind( CDataProfile& cProfile, CommonSetting_KeyBind& s
 						// 割り当て済みキーコードは上書き
 						int idx = sKeyBind.m_VKeyToKeyNameArr[tmpKeydata.m_nKeyCode];
 						if( idx != KEYNAME_SIZE ){
-							wcscpy( tmpKeydata.m_szKeyName, sKeyBind.m_pKeyNameArr[idx].m_szKeyName );
+							wcscpy_fix( tmpKeydata.m_szKeyName, sKeyBind.m_pKeyNameArr[idx].m_szKeyName );
 							sKeyBind.m_pKeyNameArr[idx] = tmpKeydata;
 						}else{// 未割り当てキーコードは末尾に追加
 							if( nKeyNameArrUsed >= KEYNAME_SIZE ){}
 							else{
-								wcscpy( tmpKeydata.m_szKeyName, sKeyBind.m_pKeyNameArr[nKeyNameArrUsed].m_szKeyName );
+								wcscpy_fix( tmpKeydata.m_szKeyName, sKeyBind.m_pKeyNameArr[nKeyNameArrUsed].m_szKeyName );
 								sKeyBind.m_pKeyNameArr[nKeyNameArrUsed] = tmpKeydata;
 								sKeyBind.m_VKeyToKeyNameArr[tmpKeydata.m_nKeyCode] = (BYTE)nKeyNameArrUsed++;
 							}
@@ -1326,9 +1326,9 @@ void CShareData_IO::ShareData_IO_Print( CDataProfile& cProfile )
 		if(0==wcscmp(printsetting.m_szHeaderForm[0],_EDITL("&f")) &&
 		   0==wcscmp(printsetting.m_szFooterForm[0],_EDITL("&C- &P -"))
 		){
-			wcscpy( printsetting.m_szHeaderForm[0], _EDITL("$f") );
-			wcscpy( printsetting.m_szFooterForm[0], _EDITL("") );
-			wcscpy( printsetting.m_szFooterForm[1], _EDITL("- $p -") );
+			wcscpy_fix( printsetting.m_szHeaderForm[0], _EDITL("$f") );
+			wcscpy_fix( printsetting.m_szFooterForm[0], _EDITL("") );
+			wcscpy_fix( printsetting.m_szFooterForm[1], _EDITL("- $p -") );
 		}
 
 		//禁則	//@@@ 2002.04.09 MIK
@@ -1384,8 +1384,8 @@ void CShareData_IO::ShareData_IO_Types( CDataProfile& cProfile )
 			if( i == 0 ){
 				pShare->m_TypeBasis = type;
 			}
-			wcscpy(pShare->m_TypeMini[i].m_szTypeExts, type.m_szTypeExts);
-			wcscpy(pShare->m_TypeMini[i].m_szTypeName, type.m_szTypeName);
+			wcscpy_fix(pShare->m_TypeMini[i].m_szTypeExts, type.m_szTypeExts);
+			wcscpy_fix(pShare->m_TypeMini[i].m_szTypeName, type.m_szTypeName);
 			pShare->m_TypeMini[i].m_id = type.m_id;
 			pShare->m_TypeMini[i].m_encoding = type.m_encoding;
 		}
@@ -1497,7 +1497,7 @@ void CShareData_IO::ShareData_IO_Type_One( CDataProfile& cProfile, STypeConfig& 
 
 	// 2005.04.07 D.S.Koba
 	static const WCHAR* pszForm = LTEXT("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d");	//MIK
-	wcscpy( szKeyName, LTEXT("nInts") );
+	wcscpy_fix( szKeyName, LTEXT("nInts") );
 	if( cProfile.IsReadingMode() ){
 		if( cProfile.IOProfileData(pszSecName, szKeyName, StringBufferW(szKeyData)) ){
 			int buf[12];

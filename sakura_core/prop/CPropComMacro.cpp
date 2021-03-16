@@ -577,7 +577,7 @@ void CPropMacro::SelectBaseDir_Macro( HWND hwndDlg )
 	// 2007.05.19 ryoji 相対パスは設定ファイルからのパスを優先
 	if( _IS_REL_PATH( szDir ) ){
 		WCHAR folder[_MAX_PATH];
-		wcscpy( folder, szDir );
+		wcscpy_fix( folder, szDir );
 		GetInidirOrExedir( szDir, folder );
 	}
 
@@ -606,7 +606,7 @@ void CPropMacro::OnFileDropdown_Macro( HWND hwndDlg )
 	// 2007.05.19 ryoji 相対パスは設定ファイルからのパスを優先
 	if( _IS_REL_PATH( path ) ){
 		WCHAR folder[_MAX_PATH * 2];
-		wcscpy( folder, path );
+		wcscpy_fix( folder, path );
 		GetInidirOrExedir( path, folder );
 	}
 	wcscat( path, L"*.*" );	//	2002/05/01 YAZAKI どんなファイルもどんと来い。

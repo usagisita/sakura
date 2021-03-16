@@ -250,7 +250,7 @@ BOOL CDlgExec::OnBnClicked( int wID )
 				m_szCommand
 			);
 			if( cDlgOpenFile.DoModal_GetOpenFileName( szPath ) ){
-				wcscpy( m_szCommand, szPath );
+				wcscpy_fix( m_szCommand, szPath );
 				::DlgItem_SetText( GetHwnd(), IDC_COMBO_m_szCommand, m_szCommand );
 			}
 		}

@@ -432,7 +432,7 @@ UINT_PTR CALLBACK OFNHookProc(
 									szDefExt[0] = L'\0';
 								break;
 							case 2:		// *.txt
-								::wcscpy(szDefExt, L".txt");
+								wcscpy_fix(szDefExt, L".txt");
 								break;
 							case 3:		// *.*
 							default:	// 不明

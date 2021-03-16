@@ -147,7 +147,7 @@ static void ShowCodeBox( HWND hWnd, CEditDoc* pcEditDoc )
 						delete pCode;
 						if (ret != RESULT_COMPLETE) {
 							// うまくコードが取れなかった
-							wcscpy(szCode[i], L"-");
+							wcscpy_fix(szCode[i], L"-");
 						}
 					}
 				}
@@ -159,7 +159,7 @@ static void ShowCodeBox( HWND hWnd, CEditDoc* pcEditDoc )
 				delete pCode;
 				if (ret != RESULT_COMPLETE) {
 					// うまくコードが取れなかった
-					wcscpy(szCodeCP, L"-");
+					wcscpy_fix(szCodeCP, L"-");
 				}
 
 				// メッセージボックス表示
@@ -845,7 +845,7 @@ void CEditWnd::LayoutMainMenu()
 			/* メニューラベルの作成 */
 			// 2014.05.04 Moca プラグイン/マクロ等を置けるようにFunccode2Nameを使うように
 			GetDocument()->m_cFuncLookup.Funccode2Name( cMainMenu->m_nFunc, szLabel, _countof(szLabel) );
-			wcscpy( szKey, cMainMenu->m_sKey );
+			wcscpy_fix( szKey, cMainMenu->m_sKey );
 			if (CKeyBind::GetMenuLabel(
 				G_AppInstance(),
 				m_pShareData->m_Common.m_sKeyBind.m_nKeyNameArrNum,
@@ -855,7 +855,7 @@ void CEditWnd::LayoutMainMenu()
 				cMainMenu->m_sKey,
 				FALSE,
 				_countof(szLabel)) == NULL) {
-				wcscpy( szLabel, L"?" );
+				wcscpy_fix( szLabel, L"?" );
 			}
 			::AppendMenu( hMenu, MF_STRING, cMainMenu->m_nFunc, szLabel );
 			break;
@@ -3904,7 +3904,7 @@ void CEditWnd::InitMenubarMessageFont(void)
 	lf.lfClipPrecision	= 0x2;
 	lf.lfQuality		= 0x1;
 	lf.lfPitchAndFamily	= 0x31;
-	wcscpy( lf.lfFaceName, L"ＭＳ ゴシック" );
+	wcscpy_fix( lf.lfFaceName, L"ＭＳ ゴシック" );
 	m_hFontCaretPosInfo = ::CreateFontIndirect( &lf );
 
 	hdc = ::GetDC( ::GetDesktopWindow() );

@@ -107,8 +107,8 @@ struct COutlinePython {
 void CType_Python::InitTypeConfigImp(STypeConfig* pType)
 {
 	//名前と拡張子
-	wcscpy( pType->m_szTypeName, L"Python" );
-	wcscpy( pType->m_szTypeExts, L"py" );
+	wcscpy_fix( pType->m_szTypeName, L"Python" );
+	wcscpy_fix( pType->m_szTypeExts, L"py" );
 
 	//設定
 	pType->m_cLineComment.CopyTo( 0, L"#", -1 );					/* 行コメントデリミタ */

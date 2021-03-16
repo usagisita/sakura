@@ -32,7 +32,7 @@
 void CType_Basis::InitTypeConfigImp(STypeConfig* pType)
 {
 	//名前と拡張子
-	wcscpy( pType->m_szTypeName, L"基本" );
+	wcscpy_fix( pType->m_szTypeName, L"基本" );
 	pType->m_szTypeExts[0] = L'\0';
 
 	//設定

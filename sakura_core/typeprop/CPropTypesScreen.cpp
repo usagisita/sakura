@@ -684,7 +684,7 @@ int CPropTypesScreen::GetData( HWND hwndDlg )
 		/* TAB表示文字列 */
 		WIN_CHAR szTab[8+1]; /* +1. happy */
 		::DlgItem_GetText( hwndDlg, IDC_EDIT_TABVIEWSTRING, szTab, _countof( szTab ) );
-		wcscpy( m_Types.m_szTabViewString, L"^       " );
+		wcscpy_fix( m_Types.m_szTabViewString, L"^       " );
 		for( int i = 0; i < 8; i++ ){
 			if( !WCODE::IsTabAvailableCode(szTab[i]) )break;
 			m_Types.m_szTabViewString[i] = szTab[i];

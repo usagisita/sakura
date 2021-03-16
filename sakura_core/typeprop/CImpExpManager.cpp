@@ -257,7 +257,7 @@ bool CImpExpType::ImportAscertain( HINSTANCE hInstance, HWND hwndParent, const w
 		return false;
 	}
 	if ((unsigned int)nStructureVersion != m_pShareData->m_vStructureVersion) {
-		wcscpy( szKeyVersion, L"?" );
+		wcscpy_fix( szKeyVersion, L"?" );
 		m_cProfile.IOProfileData(szSecInfo, szKeyVersion, StringBufferW(szKeyVersion));
 		int nRet = ConfirmMessage( hwndParent,
 			LS(STR_IMPEXP_VER), 

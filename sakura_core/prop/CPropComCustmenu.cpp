@@ -686,7 +686,7 @@ void CPropCustmenu::SetDataMenuList(HWND hwndDlg, int nIdx)
 		}
 		/* キー */
 		if( '\0' == m_Common.m_sCustomMenu.m_nCustMenuItemKeyArr[nIdx][i] ){
-			wcscpy( szLabel2, szLabel );
+			wcscpy_fix( szLabel2, szLabel );
 		}else{
 			auto_sprintf( szLabel2, LTEXT("%ls(%hc)"),
 				szLabel,

@@ -92,7 +92,7 @@ BOOL CDlgOpenFile::SelectFile(
 	if( resolvePath && _IS_REL_PATH( szFilePath ) ){
 		GetInidirOrExedir(szPath, szFilePath);
 	}else{
-		wcscpy(szPath, szFilePath);
+		wcscpy_fix(szPath, szFilePath);
 	}
 	/* ファイルオープンダイアログの初期化 */
 	cDlgOpenFile.Create(

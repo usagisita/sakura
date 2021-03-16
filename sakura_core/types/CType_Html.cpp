@@ -39,8 +39,8 @@
 //2012.01.03 シングルクォートの色分けをする
 void CType_Html::InitTypeConfigImp(STypeConfig* pType)
 {
-	wcscpy( pType->m_szTypeName, L"HTML" );
-	wcscpy( pType->m_szTypeExts, L"html,htm,shtml,plg" );
+	wcscpy_fix( pType->m_szTypeName, L"HTML" );
+	wcscpy_fix( pType->m_szTypeExts, L"html,htm,shtml,plg" );
 
 	//設定
 	pType->m_cBlockComments[0].SetBlockCommentRule( L"<!--", L"-->" );	/* ブロックコメントデリミタ */
@@ -177,7 +177,7 @@ void CDocOutline::MakeTopicList_html(CFuncInfoArr* pcFuncInfoArr, bool bXml)
 				都度比較するのはコストが高いので、最初に分類しておく。 2008.08.15 aroka
 				比較の回数が多いため、小文字に変換しておいてstrcmpを使う。
 			*/
-			wcscpy( szTag, szTitle );
+			wcscpy_fix( szTag, szTitle );
 			if( !bXml ){
 				_wcslwr( szTag );
 			}
@@ -285,7 +285,7 @@ void CDocOutline::MakeTopicList_html(CFuncInfoArr* pcFuncInfoArr, bool bXml)
 
 					if( nLabelType!=LT_EMPTY ){
 						// 終了タグなしを除く全てのタグらしきものを判定
-						wcscpy(pszStack[nDepth],szTitle);
+						wcscpy_fix(pszStack[nDepth],szTitle);
 						k	=	j;
 						int x = j;
 						// 2014.12.25 32文字以上のとき,別の行のときにも「/>」bEndTagに対応

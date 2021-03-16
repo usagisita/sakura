@@ -317,7 +317,7 @@ int CKeyWordSetMgr::DelKeyWord( int nIdx, int nIdx2 )
 	int  i;
 	int  endPos = m_nStartIdx[nIdx] + m_nKeyWordNumArr[nIdx] - 1;
 	for( i = m_nStartIdx[nIdx] + nIdx2; i < endPos; ++i ){
-		wcscpy( m_szKeyWordArr[i], m_szKeyWordArr[i + 1] );
+		wcscpy_fix( m_szKeyWordArr[i], m_szKeyWordArr[i + 1] );
 	}
 	m_nKeyWordNumArr[nIdx]--;
 

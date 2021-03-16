@@ -38,8 +38,8 @@
 void CType_Vb::InitTypeConfigImp(STypeConfig* pType)
 {
 	//名前と拡張子
-	wcscpy( pType->m_szTypeName, L"Visual Basic" );
-	wcscpy( pType->m_szTypeExts, L"bas,frm,cls,ctl,pag,dob,dsr,vb" );
+	wcscpy_fix( pType->m_szTypeName, L"Visual Basic" );
+	wcscpy_fix( pType->m_szTypeExts, L"bas,frm,cls,ctl,pag,dob,dsr,vb" );
 
 	//設定
 	pType->m_cLineComment.CopyTo( 0, L"'", -1 );				/* 行コメントデリミタ */
@@ -256,7 +256,7 @@ void CDocOutline::MakeFuncList_VisualBasic( CFuncInfoArr* pcFuncInfoArr )
 						bProcedure	= false;	// プロシージャフラグをクリア
 					}
 					else if( 1 == nParseCnt ){
-						wcscpy( szFuncName, szWord );
+						wcscpy_fix( szFuncName, szWord );
 						/*
 						  カーソル位置変換
 						  物理位置(行頭からのバイト数、折り返し無し行位置)
@@ -269,7 +269,7 @@ void CDocOutline::MakeFuncList_VisualBasic( CFuncInfoArr* pcFuncInfoArr )
 						nFuncId	= 0;	// Jul 10, 2003  little YOSHI  論理和を使用するため、必ず初期化
 					}
 
-					wcscpy( szWordPrev, szWord );
+					wcscpy_fix( szWordPrev, szWord );
 					nWordIdx = 0;
 					szWord[0] = L'\0';
 					nMode = 0;
@@ -301,7 +301,7 @@ void CDocOutline::MakeFuncList_VisualBasic( CFuncInfoArr* pcFuncInfoArr )
 					L'#' == pLine[i] ||
 					2 == nCharChars
 				){
-					wcscpy( szWordPrev, szWord );
+					wcscpy_fix( szWordPrev, szWord );
 					nWordIdx = 0;
 					szWord[0] = L'\0';
 					nMode = 0;

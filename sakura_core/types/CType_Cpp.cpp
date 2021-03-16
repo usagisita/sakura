@@ -83,8 +83,8 @@ inline bool IsHeadCppKeyword(const wchar_t* pData)
 void CType_Cpp::InitTypeConfigImp(STypeConfig* pType)
 {
 	//名前と拡張子
-	wcscpy( pType->m_szTypeName, L"C/C++" );
-	wcscpy( pType->m_szTypeExts, L"c,cpp,cxx,cc,cp,c++,h,hpp,hxx,hh,hp,h++,rc,hm" );
+	wcscpy_fix( pType->m_szTypeName, L"C/C++" );
+	wcscpy_fix( pType->m_szTypeExts, L"c,cpp,cxx,cc,cp,c++,h,hpp,hxx,hh,hp,h++,rc,hm" );
 
 	//設定
 	pType->m_cLineComment.CopyTo( 0, L"//", -1 );							/* 行コメントデリミタ */
@@ -587,7 +587,7 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 								if(nMode2 == M2_NAMESPACE_SAVE)
 								{
 									if(szWord[0]!='\0')
-										wcscpy( szItemName, szWord );
+										wcscpy_fix( szItemName, szWord );
 									nMode2 = M2_NAMESPACE_END;
 								}
 								else if( nMode2 == M2_TEMPLATE_SAVE)
@@ -607,8 +607,8 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 							// strcut name final のfinalはクラス名の一部ではない
 							// ただし struct finalは名前
 						}else{
-							wcscpy( szTemplateName, szWord );
-							wcscpy( szItemName, szWord );
+							wcscpy_fix( szTemplateName, szWord );
+							wcscpy_fix( szItemName, szWord );
 						}
 					}else if( nMode2 == M2_TEMPLATE_SAVE || nMode2 == M2_TEMPLATE_WORD ){
 						// strcut name<X> final のfinalはクラス名の一部ではない
@@ -663,7 +663,7 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 					//	To Here Mar. 31, 2001 genta
 					// 2004/03/12 zenryaku キーワードに _ と PARAMS を使わせない (GNUのコードが見にくくなるから)
 					if( !( wcscmp(L"PARAMS",szWord) == 0 || wcscmp(L"_",szWord) == 0 ) )
-						wcscpy( szWordPrev, szWord );
+						wcscpy_fix( szWordPrev, szWord );
 					nWordIdx = 0;
 					szWord[0] = L'\0';
 					nMode = 0;
@@ -684,7 +684,7 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 					 '"' == pLine[i] ||
 					 (L'/' == pLine[i] && (L'*' == pLine[i+1] || L'/' == pLine[i+1]))
 				){
-					wcscpy( szWordPrev, szWord );
+					wcscpy_fix( szWordPrev, szWord );
 					nWordIdx = 0;
 					szWord[0] = L'\0';
 					nMode = 0;
@@ -723,7 +723,7 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 						if( pLine[i] == L'<' ){
 							nNestLevel_template++;
 						}else if( pLine[i] == L'>' ){
-							wcscpy( szItemName, szTemplateName );
+							wcscpy_fix( szItemName, szTemplateName );
 							nNestLevel_template--;
 							if( nNestLevel_template == 0 ){
 								if( nMode2 == M2_TEMPLATE ){
@@ -731,7 +731,7 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 								}else if( nMode2 == M2_TEMPLATE_WORD ){
 									nMode2 = nMode2Old;
 									if( nMode2 == M2_OPERATOR_WORD ){
-										wcscpy(szWord, szTemplateName);
+										wcscpy_fix(szWord, szTemplateName);
 										nWordIdx = wcslen(szWord) - 1;
 										szTemplateName[0] = L'\0';
 									}
@@ -918,7 +918,7 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 				if( '(' == pLine[i] ){
 					//  2002/10/27 frozen ここから
 //					if( nNestLevel == 0 && !bCppInitSkip ){
-//						wcscpy( szFuncName, szWordPrev );
+//						wcscpy_fix( szFuncName, szWordPrev );
 //						nFuncLine = nLineCount + 1;
 //						nNestLevel2 = 1;
 //					}
@@ -969,9 +969,9 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 							}
 							if( bAdd ){
 								if( szTemplateName[0] ){
-									wcscpy(szItemName, szTemplateName);
+									wcscpy_fix(szItemName, szTemplateName);
 								}else{
-									wcscpy(szItemName, szWordPrev);
+									wcscpy_fix(szItemName, szWordPrev);
 								}
 								nItemLine = nLineCount + CLogicInt(1);
 							}
@@ -1129,10 +1129,10 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 								//	前の文字列に続ける
 								if( nMode2 == M2_NORMAL || nMode2 == M2_OPERATOR_WORD ){
 									if( szTemplateName[0] ){
-										wcscpy( szWord, szTemplateName );
+										wcscpy_fix( szWord, szTemplateName );
 										szTemplateName[0] = '\0';
 									}else{
-										wcscpy( szWord, szWordPrev );
+										wcscpy_fix( szWord, szWordPrev );
 									}
 								}
 								nWordIdx = wcslen( szWord );
@@ -1145,7 +1145,7 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 									szWordPrev[pos + 2] = L' ';
 									szWordPrev[pos + 3] = L'\0';
 								}
-								wcscpy( szWord, szWordPrev );
+								wcscpy_fix( szWord, szWordPrev );
 								nWordIdx = wcslen( szWord );
 								nMode2 = M2_OPERATOR_WORD;
 							}else if( nMode2 == M2_OPERATOR_WORD ){
@@ -1155,7 +1155,7 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 									szWordPrev[pos + 2] = L' ';
 									szWordPrev[pos + 3] = L'\0';
 								}
-								wcscpy( szWord, szWordPrev );
+								wcscpy_fix( szWord, szWordPrev );
 								nWordIdx = wcslen( szWord );
 							}
 							//	To Here Apr. 1, 2001 genta
@@ -1163,14 +1163,14 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 								nWordIdx = 0;
 							}
 						}
-						//	wcscpy( szWordPrev, szWord );	不要？
+						//	wcscpy_fix( szWordPrev, szWord );	不要？
 						//	To Here
 						if( pLine[i] == L':' && pLine[i+1] != L':')
 						{
 							if(nMode2 == M2_NAMESPACE_SAVE)
 							{
 								if(szWord[0]!='\0')
-									wcscpy( szItemName, szWord );
+									wcscpy_fix( szItemName, szWord );
 								nMode2 = M2_NAMESPACE_END;
 							}
 							else if( nMode2 == M2_TEMPLATE_SAVE)
@@ -1228,15 +1228,15 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 							nMode2 = M2_AFTER_EQUAL;
 						}else if( nMode2 == M2_NORMAL && C_IsOperator(szWordPrev, nLen) ){
 							// 演算子のオペレータだった operator +
-							wcscpy(szWord, szWordPrev);
+							wcscpy_fix(szWord, szWordPrev);
 							nWordIdx = (int)nLen -1;
 							nMode2 = M2_OPERATOR_WORD;
 						}else if( nMode2 == M2_OPERATOR_WORD ){
 							// operator 継続中
-							wcscpy(szWord, szWordPrev);
+							wcscpy_fix(szWord, szWordPrev);
 							nWordIdx = (int)nLen -1;
 						}else{
-							wcscpy(szWordPrev, szWord);
+							wcscpy_fix(szWordPrev, szWord);
 							nWordIdx = -1;
 						}
 						// 2002/10/27 frozen ここから

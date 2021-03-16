@@ -265,7 +265,7 @@ void CCommandLine::ParseCommandLine( LPCWSTR pszCmdLineSrc, bool bResponse )
 	}
 	if( bFind ){
 		CSakuraEnvironment::ResolvePath(szPath);
-		wcscpy( m_fi.m_szPath, szPath );	/* ファイル名 */
+		wcscpy_fix( m_fi.m_szPath, szPath );	/* ファイル名 */
 		nPos = i + 1;
 	}else{
 		m_fi.m_szPath[0] = L'\0';
@@ -343,7 +343,7 @@ void CCommandLine::ParseCommandLine( LPCWSTR pszCmdLineSrc, bool bResponse )
 			if (szPath[0] != L'\0') {
 				CSakuraEnvironment::ResolvePath(szPath);
 				if (m_fi.m_szPath[0] == L'\0') {
-					wcscpy(m_fi.m_szPath, szPath );
+					wcscpy_fix(m_fi.m_szPath, szPath );
 				}
 				else {
 					m_vFiles.push_back( szPath );
@@ -407,7 +407,7 @@ void CCommandLine::ParseCommandLine( LPCWSTR pszCmdLineSrc, bool bResponse )
 			case CMDLINEOPT_GREPMODE:	//	GREPMODE
 				m_bGrepMode = true;
 				if( L'\0' == m_fi.m_szDocType[0] ){
-					wcscpy( m_fi.m_szDocType , L"grepout" );
+					wcscpy_fix( m_fi.m_szDocType , L"grepout" );
 				}
 				break;
 			case CMDLINEOPT_GREPDLG:	//	GREPDLG
@@ -496,7 +496,7 @@ void CCommandLine::ParseCommandLine( LPCWSTR pszCmdLineSrc, bool bResponse )
 				m_bDebugMode = true;
 				// 2010.06.16 Moca -TYPE=output 扱いとする
 				if( L'\0' == m_fi.m_szDocType[0] ){
-					wcscpy( m_fi.m_szDocType , L"output" );
+					wcscpy_fix( m_fi.m_szDocType , L"output" );
 				}
 				break;
 			case CMDLINEOPT_NOMOREOPT:	// 2007.09.09 genta これ以降引数無効

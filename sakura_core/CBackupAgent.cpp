@@ -210,7 +210,7 @@ int CBackupAgent::MakeBackUp(
 		WCHAR szNewPath[MAX_PATH];
 		WCHAR *pNewNrBase;
 
-		wcscpy( szNewPath, szPath );
+		wcscpy_fix( szNewPath, szPath );
 		pNewNrBase = szNewPath + wcslen( szNewPath ) - 2;
 
 		for( ; i >= 0; --i ){
@@ -427,7 +427,7 @@ bool CBackupAgent::FormatBackUpPath(
 				//	Jun.  5, 2005 genta 拡張子を残せるように処理起点を操作する
 				if( bup_setting.GetBackupType() == 3 ){
 					// 元の拡張子をクリアする
-					::wcscpy_s(szExt, L"");
+					wcscpy_fix(szExt, L"");
 				}
 				const WCHAR szBackupExt[] = { L'.', bup_setting.GetBackupExtChar(), L'0', L'0', 0 };
 				::wcscat_s(szExt, szBackupExt);
@@ -463,7 +463,7 @@ bool CBackupAgent::FormatBackUpPath(
 			// make keys
 			// $0-$9に対応するフォルダ名を切り出し
 			WCHAR keybuff[1024];
-			wcscpy( keybuff, szDir );
+			wcscpy_fix( keybuff, szDir );
 			CutLastYenFromDirectoryPath( keybuff );
 
 			WCHAR *folders[10];

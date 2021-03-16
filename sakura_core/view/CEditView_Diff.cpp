@@ -150,7 +150,7 @@ void CEditView::ViewDiffInfo(
 
 	//オプションを作成する
 	WCHAR	szOption[16];	// "-cwbBt"
-	wcscpy( szOption, L"-" );
+	wcscpy_fix( szOption, L"-" );
 	if( nFlgOpt & 0x0001 ) wcscat( szOption, L"i" );	//-i ignore-case         大文字小文字同一視
 	if( nFlgOpt & 0x0002 ) wcscat( szOption, L"w" );	//-w ignore-all-space    空白無視
 	if( nFlgOpt & 0x0004 ) wcscat( szOption, L"b" );	//-b ignore-space-change 空白変更無視

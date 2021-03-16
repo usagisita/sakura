@@ -275,11 +275,11 @@ bool CViewCommander::Command_TAGJUMP( bool bClose )
 					}
 					wcscat( szPath, szFile );
 					if( IsFileExists2( szPath ) ){
-						wcscpy( szJumpToFile, szPath );
+						wcscpy_fix( szJumpToFile, szPath );
 						break;
 					}
 					// 相対パスだった→◎”を探す
-					wcscpy( szFile, szPath );
+					wcscpy_fix( szFile, szPath );
 					searchMode = TAGLIST_ROOT;
 					continue;
 				}
@@ -456,7 +456,7 @@ bool CViewCommander::Command_TagsMake( void )
 	//	To Here Dec. 28, 2002 MIK
 
 	WCHAR	options[1024];
-	wcscpy( options, L"--excmd=n" );	//デフォルトのオプション
+	wcscpy_fix( options, L"--excmd=n" );	//デフォルトのオプション
 	if( cDlgTagsMake.m_nTagsOpt & 0x0001 ) wcscat( options, L" -R" );	//サブフォルダも対象
 	if( cDlgTagsMake.m_szTagsCmdLine[0] != L'\0' )	//個別指定のコマンドライン
 	{

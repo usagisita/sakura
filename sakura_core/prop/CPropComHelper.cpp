@@ -166,7 +166,7 @@ INT_PTR CPropHelper::DispatchEvent(
 					if( _IS_REL_PATH( m_Common.m_sHelper.m_szMigemoDict ) ){
 						GetInidirOrExedir( szPath, m_Common.m_sHelper.m_szMigemoDict, TRUE );
 					}else{
-						wcscpy( szPath, m_Common.m_sHelper.m_szMigemoDict );
+						wcscpy_fix( szPath, m_Common.m_sHelper.m_szMigemoDict );
 					}
 					if( SelectDir( hwndDlg, LS(STR_PROPCOMHELP_MIGEMODIR), szPath, szPath ) ){
 						wcscpy( m_Common.m_sHelper.m_szMigemoDict, GetRelPath(szPath) ); // 2015.03.03 可能なら相対パスにする

@@ -282,7 +282,7 @@ HWND CControlTray::Create( HINSTANCE hInstance )
 	m_pcPropertyManager = new CPropertyManager();
 	m_pcPropertyManager->Create( GetTrayHwnd(), &m_hIcons, &m_cMenuDrawer );
 
-	wcscpy(m_szLanguageDll, GetDllShareData().m_Common.m_sWindow.m_szLanguageDll);
+	wcscpy_fix(m_szLanguageDll, GetDllShareData().m_Common.m_sWindow.m_szLanguageDll);
 
 	return GetTrayHwnd();
 }
@@ -601,7 +601,7 @@ LRESULT CControlTray::DispatchEvent(
 			case PM_CHANGESETTING_ALL:
 				{
 					bool bChangeLang = wcscmp( GetDllShareData().m_Common.m_sWindow.m_szLanguageDll, m_szLanguageDll ) != 0;
-					wcscpy( m_szLanguageDll, GetDllShareData().m_Common.m_sWindow.m_szLanguageDll );
+					wcscpy_fix( m_szLanguageDll, GetDllShareData().m_Common.m_sWindow.m_szLanguageDll );
 					std::vector<std::wstring> values;
 					if( bChangeLang ){
 						CShareData::getInstance()->ConvertLangValues(values, true);
@@ -660,8 +660,8 @@ LRESULT CControlTray::DispatchEvent(
 					}
 					*(CShareData::getInstance()->GetTypeSettings()[nIdx]) = type;
 					CShareData::getInstance()->GetTypeSettings()[nIdx]->m_nIdx = nIdx;
-					wcscpy(m_pShareData->m_TypeMini[nIdx].m_szTypeName, type.m_szTypeName);
-					wcscpy(m_pShareData->m_TypeMini[nIdx].m_szTypeExts, type.m_szTypeExts);
+					wcscpy_fix(m_pShareData->m_TypeMini[nIdx].m_szTypeName, type.m_szTypeName);
+					wcscpy_fix(m_pShareData->m_TypeMini[nIdx].m_szTypeExts, type.m_szTypeExts);
 					m_pShareData->m_TypeMini[nIdx].m_id = type.m_id;
 					m_pShareData->m_TypeMini[nIdx].m_encoding = type.m_encoding;
 				}else{
@@ -710,8 +710,8 @@ LRESULT CControlTray::DispatchEvent(
 						m_pShareData->m_TypeMini[i] = m_pShareData->m_TypeMini[i-1];
 					}
 					types[nInsert] = type;
-					wcscpy(m_pShareData->m_TypeMini[nInsert].m_szTypeName, type->m_szTypeName);
-					wcscpy(m_pShareData->m_TypeMini[nInsert].m_szTypeExts, type->m_szTypeExts);
+					wcscpy_fix(m_pShareData->m_TypeMini[nInsert].m_szTypeName, type->m_szTypeName);
+					wcscpy_fix(m_pShareData->m_TypeMini[nInsert].m_szTypeExts, type->m_szTypeExts);
 					m_pShareData->m_TypeMini[nInsert].m_id = type->m_id;
 					m_pShareData->m_TypeMini[nInsert].m_encoding = type->m_encoding;
 				}else{

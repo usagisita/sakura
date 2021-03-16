@@ -83,7 +83,7 @@ bool CEditView::TagJumpSub(
 	WCHAR	szWork[1024];
 	if( FALSE != ::GetLongFileName( szJumpToFile, szWork ) )
 	{
-		wcscpy( szJumpToFile, szWork );
+		wcscpy_fix( szJumpToFile, szWork );
 	}
 
 // 2004/06/21 novice タグジャンプ機能追加

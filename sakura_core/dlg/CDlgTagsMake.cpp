@@ -147,7 +147,7 @@ void CDlgTagsMake::SetData( void )
 
 	//コマンドライン
 	Combo_LimitText( GetItemHwnd( IDC_EDIT_TAG_MAKE_CMDLINE ), _countof( m_pShareData->m_szTagsCmdLine ) );
-	wcscpy( m_szTagsCmdLine, m_pShareData->m_szTagsCmdLine );
+	wcscpy_fix( m_szTagsCmdLine, m_pShareData->m_szTagsCmdLine );
 	::DlgItem_SetText( GetHwnd(), IDC_EDIT_TAG_MAKE_CMDLINE, m_pShareData->m_szTagsCmdLine );
 
 	return;
@@ -172,7 +172,7 @@ int CDlgTagsMake::GetData( void )
 
 	//コマンドライン
 	::DlgItem_GetText( GetHwnd(), IDC_EDIT_TAG_MAKE_CMDLINE, m_szTagsCmdLine, _countof( m_szTagsCmdLine ) );
-	wcscpy( m_pShareData->m_szTagsCmdLine, m_szTagsCmdLine );
+	wcscpy_fix( m_pShareData->m_szTagsCmdLine, m_szTagsCmdLine );
 
 	return TRUE;
 }
