@@ -1016,7 +1016,7 @@ bool CPropMainMenu::GetDataTree( HWND hwndTree, HTREEITEM htiTrg, int nLevel )
 		switch(pFuncWk->m_nFunc) {
 		case F_NODE:
 			pcFunc->m_nType = T_NODE;
-			wcscpy_s( pcFunc->m_sName, MAX_MAIN_MENU_NAME_LEN+1, SupplementAmpersand( pFuncWk->m_sName ).c_str() );
+			wcscpy_s(pcFunc->m_sName, SupplementAmpersand( pFuncWk->m_sName ).c_str() );
 			break;
 		case F_SEPARATOR:
 			pcFunc->m_nType = T_SEPARATOR;

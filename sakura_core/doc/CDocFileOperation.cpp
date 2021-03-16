@@ -296,7 +296,7 @@ bool CDocFileOperation::SaveFileDialog(LPWSTR szPath)
 	sSaveInfo.cFilePath = szPath;
 	sSaveInfo.eCharCode = CODE_CODEMAX; //###トリッキー
 	bool bRet = SaveFileDialog(&sSaveInfo);
-	wcscpy_s(szPath, _MAX_PATH, sSaveInfo.cFilePath);
+	wcscpy_s_len(szPath, _MAX_PATH, sSaveInfo.cFilePath);
 	return bRet;
 }
 

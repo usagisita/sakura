@@ -247,7 +247,7 @@ void CSakuraEnvironment::ExpandParameter(const wchar_t* pszSource, wchar_t* pszB
 				WCHAR*	pEnd;
 				WCHAR*	p;
 
-				wcscpy_s( buff, _MAX_PATH, pcDoc->m_cDocFile.GetFilePath() );
+				wcscpy_s( buff, pcDoc->m_cDocFile.GetFilePath() );
 				pEnd = NULL;
 				for ( p = buff; *p != '\0'; p++) {
 					if (*p == L'\\') {
@@ -788,7 +788,7 @@ void CSakuraEnvironment::ResolvePath(WCHAR* pszPath)
 
 	// pSrc -> pszPath
 	if(pSrc != pszPath){
-		wcscpy_s(pszPath, _MAX_PATH, pSrc);
+		wcscpy_s_len(pszPath, _MAX_PATH, pSrc);
 	}
 }
 

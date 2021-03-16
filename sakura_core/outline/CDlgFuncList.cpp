@@ -1545,7 +1545,7 @@ void CDlgFuncList::SetTreeFile()
 			if( _countof(szPath2) <= strTemp.GetStringLength() ){
 				wcscpy_fix(szPath2, L"<Error:Long Path>");
 			}else{
-				wcscpy_s(szPath2, _countof(szPath), strTemp.GetStringPtr());
+				wcscpy_s(szPath2, strTemp.GetStringPtr());
 			}
 		}else{
 			wcscpy(szPath2, pszFrom);

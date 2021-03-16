@@ -2246,7 +2246,7 @@ void CShareData_IO::IO_MainMenu( CDataProfile& cProfile, std::vector<std::wstrin
 
 			// 表示名
 			p++;
-			wcscpy_s( pcMenu->m_sName, MAX_MAIN_MENU_NAME_LEN+1, p );
+			wcscpy_s_len(pcMenu->m_sName, p);
 		}
 		else {
 			if (GetPlugCmdInfoByFuncCode( pcMenu->m_nFunc, szFuncName )) {

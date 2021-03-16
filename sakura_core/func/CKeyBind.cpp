@@ -398,20 +398,20 @@ WCHAR*	CKeyBind::MakeMenuLabel(const WCHAR* sName, const WCHAR* sKey)
 		if( !GetDllShareData().m_Common.m_sMainMenu.m_bMainMenuKeyParentheses
 			  && (((p = wcschr( sName, sKey[0])) != NULL) || ((p = wcschr( sName, _totlower(sKey[0]))) != NULL)) ){
 			// 欧文風、使用している文字をアクセスキーに
-			wcscpy_s( sLabel, _countof(sLabel), sName );
+			wcscpy_s(sLabel, sName);
 			sLabel[p-sName] = L'&';
 			wcscpy_s( sLabel + (p-sName) + 1, _countof(sLabel), p );
 		}
 		else if( (p = wcschr( sName, L'(' )) != NULL
 			  && (p = wcschr( p, sKey[0] )) != NULL) {
 			// (付その後にアクセスキー
-			wcscpy_s( sLabel, _countof(sLabel), sName );
+			wcscpy_s(sLabel, sName);
 			sLabel[p-sName] = L'&';
 			wcscpy_s( sLabel + (p-sName) + 1, _countof(sLabel), p );
 		}
 		else if (wcscmp( sName + wcslen(sName) - 3, L"..." ) == 0) {
 			// 末尾...
-			wcscpy_s( sLabel, _countof(sLabel), sName );
+			wcscpy_s(sLabel, sName);
 			sLabel[wcslen(sName) - 3] = '\0';						// 末尾の...を取る
 			wcscat_s( sLabel, L"(&" );
 			wcscat_s( sLabel, sKey );
