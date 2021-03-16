@@ -1538,7 +1538,7 @@ void CDlgFuncList::SetTreeFile()
 			wcscpy_fix(szPath, L"<Error:Long Path>");
 		}
 		// szPath => szPath2 <iniroot>展開
-		const WCHAR* pszFrom = szPath;
+		const auto& pszFrom = szPath;
 		if( m_fileTreeSetting.m_szLoadProjectIni[0] != L'\0'){
 			CNativeW strTemp(pszFrom);
 			strTemp.Replace(L"<iniroot>", IniDirPath);
@@ -1548,13 +1548,13 @@ void CDlgFuncList::SetTreeFile()
 				wcscpy_s(szPath2, strTemp.GetStringPtr());
 			}
 		}else{
-			wcscpy(szPath2, pszFrom);
+			wcscpy_fix(szPath2, pszFrom);
 		}
 		// szPath2 => szPath 「.」やショートパス等の展開
-		pszFrom = szPath2;
-		if( ::GetLongFileName(pszFrom, szPath) ){
+		const auto& pszFrom2 = szPath2;
+		if( ::GetLongFileName(pszFrom2, szPath) ){
 		}else{
-			wcscpy(szPath, pszFrom);
+			wcscpy_fix(szPath, pszFrom2);
 		}
 		while( item.m_nDepth < (int)hParentTree.size() - 1 ){
 			hParentTree.resize(hParentTree.size() - 1);

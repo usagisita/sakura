@@ -705,14 +705,14 @@ void CDlgPluginOption::SepSelect( wstring sTrg, wstring* spView, wstring* spValu
 // ディレクトリを選択する
 void CDlgPluginOption::SelectDirectory( int iLine )
 {
-	WCHAR	szDir[_MAX_PATH+1];
+	WCHAR	szDir[_MAX_PATH];
 
 	/* 検索フォルダ */
 	::DlgItem_GetText( GetHwnd(), IDC_EDIT_PLUGIN_OPTION_DIR, szDir, _countof(szDir) );
 
 	if (_IS_REL_PATH( szDir )) {
 		WCHAR	folder[_MAX_PATH];
-		wcscpy( folder, szDir );
+		wcscpy_fix( folder, szDir );
 		GetInidirOrExedir( szDir, folder );
 	}
 

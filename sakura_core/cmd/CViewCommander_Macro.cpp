@@ -132,17 +132,16 @@ void CViewCommander::Command_LOADKEYMACRO( void )
 	GetDllShareData().m_sFlags.m_hwndRecordingKeyMacro = NULL;	/* キーボードマクロを記録中のウィンドウ */
 
 	CDlgOpenFile	cDlgOpenFile;
-	WCHAR			szPath[_MAX_PATH + 1];
-	WCHAR			szInitDir[_MAX_PATH + 1];
-	const WCHAR*		pszFolder;
+	WCHAR			szPath[_MAX_PATH];
+	WCHAR			szInitDir[_MAX_PATH];
+	const auto &	pszFolder = GetDllShareData().m_Common.m_sMacro.m_szMACROFOLDER;
 	szPath[0] = L'\0';
-	pszFolder = GetDllShareData().m_Common.m_sMacro.m_szMACROFOLDER;
 	// 2003.06.23 Moca 相対パスは実行ファイルからのパス
 	// 2007.05.19 ryoji 相対パスは設定ファイルからのパスを優先
 	if( _IS_REL_PATH( pszFolder ) ){
 		GetInidirOrExedir( szInitDir, pszFolder );
 	}else{
-		wcscpy_s( szInitDir, pszFolder );	/* マクロ用フォルダ */
+		wcscpy_fix( szInitDir, pszFolder );	/* マクロ用フォルダ */
 	}
 	/* ファイルオープンダイアログの初期化 */
 	cDlgOpenFile.Create(
@@ -159,7 +158,7 @@ void CViewCommander::Command_LOADKEYMACRO( void )
 
 	/* キーボードマクロの読み込み */
 	//@@@ 2002.1.24 YAZAKI 読み込みといいつつも、ファイル名をコピーするだけ。実行直前に読み込む
-	wcscpy(GetDllShareData().m_Common.m_sMacro.m_szKeyMacroFileName, szPath);
+	wcscpy_fix(GetDllShareData().m_Common.m_sMacro.m_szKeyMacroFileName, szPath);
 //	GetDllShareData().m_CKeyMacroMgr.LoadKeyMacro( G_AppInstance(), m_pCommanderView->GetHwnd(), szPath );
 	return;
 }
@@ -206,19 +205,18 @@ void CViewCommander::Command_EXECKEYMACRO( void )
 void CViewCommander::Command_EXECEXTMACRO( const WCHAR* pszPath, const WCHAR* pszType )
 {
 	CDlgOpenFile	cDlgOpenFile;
-	WCHAR			szPath[_MAX_PATH + 1];
-	WCHAR			szInitDir[_MAX_PATH + 1];	//ファイル選択ダイアログの初期フォルダ
-	const WCHAR*	pszFolder;					//マクロフォルダ
+	WCHAR			szPath[_MAX_PATH];
+	WCHAR			szInitDir[_MAX_PATH];	//ファイル選択ダイアログの初期フォルダ
 	HWND			hwndRecordingKeyMacro = NULL;
 
 	if ( !pszPath ) {
 		// ファイルが指定されていない場合、ダイアログを表示する
-		pszFolder = GetDllShareData().m_Common.m_sMacro.m_szMACROFOLDER;
+		const auto& pszFolder = GetDllShareData().m_Common.m_sMacro.m_szMACROFOLDER;
 
 		if( _IS_REL_PATH( pszFolder ) ){
 			GetInidirOrExedir( szInitDir, pszFolder );
 		}else{
-			wcscpy( szInitDir, pszFolder );	/* マクロ用フォルダ */
+			wcscpy_fix( szInitDir, pszFolder );	/* マクロ用フォルダ */
 		}
 		/* ファイルオープンダイアログの初期化 */
 		cDlgOpenFile.Create(
