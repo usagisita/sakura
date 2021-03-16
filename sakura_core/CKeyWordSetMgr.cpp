@@ -290,7 +290,7 @@ int CKeyWordSetMgr::AddKeyWord( int nIdx, const wchar_t* pszKeyWord )
 		wmemcpy( m_szKeyWordArr[m_nStartIdx[nIdx] + m_nKeyWordNumArr[nIdx]], pszKeyWord, MAX_KEYWORDLEN );
 		m_szKeyWordArr[m_nStartIdx[nIdx] + m_nKeyWordNumArr[nIdx]][MAX_KEYWORDLEN] = L'\0';
 	}else{
-		wcscpy( m_szKeyWordArr[m_nStartIdx[nIdx] + m_nKeyWordNumArr[nIdx]], pszKeyWord );
+		wcscpy_s( m_szKeyWordArr[m_nStartIdx[nIdx] + m_nKeyWordNumArr[nIdx]], pszKeyWord );
 	}
 	m_nKeyWordNumArr[nIdx]++;
 	m_IsSorted[nIdx] = 0;	//MIK 2000.12.01 binary search
@@ -506,7 +506,7 @@ int CKeyWordSetMgr::SetKeyWordArr(
 	}
 	int cnt, i;
 	for( cnt = 0, i = m_nStartIdx[nIdx]; i < m_nStartIdx[nIdx] + nSize; cnt++, i++ ){
-		wcscpy( m_szKeyWordArr[i], ppszKeyWordArr[cnt] );
+		wcscpy_s( m_szKeyWordArr[i], ppszKeyWordArr[cnt] );
 	}
 	m_nKeyWordNumArr[nIdx] = nSize;
 	return nSize;

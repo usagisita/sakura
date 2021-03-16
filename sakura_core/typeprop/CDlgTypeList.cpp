@@ -595,7 +595,7 @@ bool CDlgTypeList::CopyType()
 			CNativeW cmem;
 			// バッファをはみ出さないように
 			LimitStringLengthW( szTemp, nTempLen, _countof(type.m_szTypeName) - nLen - 1, cmem );
-			wcscpy( type.m_szTypeName, cmem.GetStringPtr() );
+			wcscpy_s( type.m_szTypeName, cmem.GetStringPtr() );
 			wcscat( type.m_szTypeName, szNum );
 			bUpdate = false;
 		}

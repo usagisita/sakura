@@ -142,7 +142,7 @@ void CViewCommander::Command_LOADKEYMACRO( void )
 	if( _IS_REL_PATH( pszFolder ) ){
 		GetInidirOrExedir( szInitDir, pszFolder );
 	}else{
-		wcscpy( szInitDir, pszFolder );	/* マクロ用フォルダ */
+		wcscpy_s( szInitDir, pszFolder );	/* マクロ用フォルダ */
 	}
 	/* ファイルオープンダイアログの初期化 */
 	cDlgOpenFile.Create(

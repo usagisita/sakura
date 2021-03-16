@@ -70,7 +70,7 @@ int CDlgTagsMake::DoModal(
 	const WCHAR*	pszPath		//パス
 )
 {
-	wcscpy( m_szPath, pszPath );
+	wcscpy_s(m_szPath, pszPath);
 
 	return (int)CDialog::DoModal( hInstance, hwndParent, IDD_TAG_MAKE, lParam );
 }

@@ -1170,7 +1170,7 @@ bool CControlTray::OpenNewEditor(
 				ErrorMessage(hWndParent, LS(STR_TRAY_RESPONSEFILE));
 				return false;
 			}
-			wcscpy(szResponseFile, pszTempFile);
+			wcscpy_s(szResponseFile, pszTempFile);
 			free(pszTempFile);
 			CTextOutputStream output(szResponseFile);
 			if( !output ){

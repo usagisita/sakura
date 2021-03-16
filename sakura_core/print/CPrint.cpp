@@ -560,7 +560,7 @@ const PAPER_INFO* CPrint::FindPaperInfo( int id )
 */
 void CPrint::SettingInitialize( PRINTSETTING& pPrintSetting, const WCHAR* settingName )
 {
-	wcscpy( pPrintSetting.m_szPrintSettingName, settingName );			/* 印刷設定の名前 */
+	wcscpy_s( pPrintSetting.m_szPrintSettingName, settingName );			/* 印刷設定の名前 */
 	wcscpy_fix( pPrintSetting.m_szPrintFontFaceHan, L"ＭＳ 明朝" );		/* 印刷フォント */
 	wcscpy_fix( pPrintSetting.m_szPrintFontFaceZen, L"ＭＳ 明朝" );		/* 印刷フォント */
 	pPrintSetting.m_bColorPrint = false;		// カラー印刷			// 2013/4/26 Uchi

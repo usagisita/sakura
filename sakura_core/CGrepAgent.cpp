@@ -1240,7 +1240,7 @@ int CGrepAgent::DoGrepFile(
 	{
 		if( CODE_AUTODETECT == sGrepOption.nGrepCharSet ){
 			if( IsValidCodeType(nCharCode) ){
-				wcscpy( szCpName, CCodeTypeName(nCharCode).Bracket() );
+				wcscpy_s( szCpName, CCodeTypeName(nCharCode).Bracket() );
 				pszCodeName = szCpName;
 			}else{
 				CCodePage::GetNameBracket(szCpName, nCharCode);
@@ -1693,7 +1693,7 @@ int CGrepAgent::DoGrepReplaceFile(
 	{
 		if( CODE_AUTODETECT == sGrepOption.nGrepCharSet ){
 			if( IsValidCodeType(nCharCode) ){
-				wcscpy( szCpName, CCodeTypeName(nCharCode).Bracket() );
+				wcscpy_s( szCpName, CCodeTypeName(nCharCode).Bracket() );
 				pszCodeName = szCpName;
 			}else{
 				CCodePage::GetNameBracket(szCpName, nCharCode);

@@ -518,7 +518,7 @@ void CNormalProcess::OpenFiles( HWND hwnd )
 		int i;
 		for( i = 0; i < fileNum; i++ ){
 			// ファイル名差し替え
-			wcscpy( fi.m_szPath, CCommandLine::getInstance()->GetFileName(i) );
+			wcscpy_s( fi.m_szPath, CCommandLine::getInstance()->GetFileName(i) );
 			bool ret = CControlTray::OpenNewEditor2( GetProcessInstance(), hwnd, &fi, bViewMode );
 			if( ret == false ){
 				break;

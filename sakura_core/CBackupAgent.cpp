@@ -529,7 +529,7 @@ bool CBackupAgent::FormatBackUpPath(
 
 			// * を拡張子にする
 			while( wcschr( szNewPath, L'*' ) ){
-				wcscpy( temp, szNewPath );
+				wcscpy_s( temp, szNewPath );
 				cp = wcschr( temp, L'*' );
 				*cp = 0;
 				if( -1 == auto_snprintf_s( szNewPath, newPathCount, L"%s%s%s", temp, ep, cp+1 ) ){

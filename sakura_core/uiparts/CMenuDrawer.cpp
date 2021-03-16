@@ -794,7 +794,7 @@ void CMenuDrawer::MyAppendMenu(
 		wcsncpy( szLabel, pszLabel, _countof( szLabel ) - 1 );
 		szLabel[ _countof( szLabel ) - 1 ] = L'\0';
 	}
-	wcscpy( szKey, pszKey); 
+	wcscpy_s( szKey, pszKey); 
 	if( nFuncId != 0 ){
 		/* メニューラベルの作成 */
 		CKeyBind::GetMenuLabel(

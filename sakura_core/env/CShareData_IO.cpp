@@ -2195,7 +2195,7 @@ void CShareData_IO::IO_MainMenu( CDataProfile& cProfile, std::vector<std::wstrin
 
 			// 読み出し
 			if( pData ){
-				wcscpy(szLine, data[dataNum++].c_str());
+				wcscpy_s(szLine, data[dataNum++].c_str());
 			}else{
 				cProfile.IOProfileData(pszSecName, szKeyName, StringBufferW(szLine));
 			}

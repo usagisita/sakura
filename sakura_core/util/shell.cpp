@@ -62,7 +62,7 @@ BOOL SelectDir( HWND hWnd, const WCHAR* pszTitle, const WCHAR* pszInitFolder, WC
 	BOOL	bRes;
 	WCHAR	szInitFolder[MAX_PATH];
 
-	wcscpy( szInitFolder, pszInitFolder );
+	wcscpy_s( szInitFolder, pszInitFolder );
 	/* フォルダの最後が半角かつ'\\'の場合は、取り除く "c:\\"等のルートは取り除かない*/
 	CutLastYenFromDirectoryPath( szInitFolder );
 

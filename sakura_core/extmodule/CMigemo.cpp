@@ -292,7 +292,7 @@ int CMigemo::migemo_load_all()
 			if (_IS_REL_PATH(szDict)){
 				GetInidirOrExedir(path,szDict);	// 2007.05.19 ryoji 相対パスは設定ファイルからのパスを優先
 			}else{
-				wcscpy(path,szDict);
+				wcscpy_s(path,szDict);
 			}
 		}
 		ppath = &path[wcslen(path)];

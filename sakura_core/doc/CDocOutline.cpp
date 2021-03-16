@@ -271,7 +271,7 @@ void CDocOutline::MakeFuncList_RuleFile( CFuncInfoArr* pcFuncInfoArr, std::wstri
 	// 項目名はグループ名
 	if( test[0].nLength == 0 ){
 		const wchar_t* g = test[0].szGroupName;
-		wcscpy(pszStack[0], g);
+		wcscpy_s(pszStack[0], g);
 		nLvStack[0] = test[0].nLv;
 		const wchar_t *p = wcschr(g, L',');
 		int len;

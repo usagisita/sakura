@@ -103,7 +103,7 @@ static wchar_t* MakeExportFileName(wchar_t* res, const wchar_t* trg, const wchar
 	wchar_t		conv[_MAX_PATH+1];
 	wchar_t*	p;
 
-	wcscpy( conv, trg );
+	wcscpy_s( conv, trg );
 
 	p = conv;
 	while ( (p = wcspbrk( p, L"\t\\:*?\"<>|" )) != NULL ) {
@@ -134,7 +134,7 @@ bool CImpExpManager::ImportUI( HINSTANCE hInstance, HWND hwndParent )
 	WCHAR	szPath[_MAX_PATH + 1];
 	szPath[0] = L'\0';
 	if( !GetFileName().empty() ){
-		wcscpy( szPath, GetFullPath().c_str());
+		wcscpy_s( szPath, GetFullPath().c_str());
 	}
 	if( !cDlgOpenFile.DoModal_GetOpenFileName( szPath ) ){
 		return false;
@@ -181,7 +181,7 @@ bool CImpExpManager::ExportUI( HINSTANCE hInstance, HWND hwndParent )
 	WCHAR			szPath[_MAX_PATH + 1];
 	szPath[0] = L'\0';
 	if( !GetFileName().empty() ){
-		wcscpy( szPath, GetFullPath().c_str());
+		wcscpy_s( szPath, GetFullPath().c_str());
 	}
 	if( !cDlgOpenFile.DoModal_GetSaveFileName( szPath ) ){
 		return false;
@@ -468,7 +468,7 @@ bool CImpExpType::Export( const wstring& sFileName, wstring& sErrMsg )
 		if (m_Types.m_nKeyWordSetIdx[i] >= 0) {
 			nIdx = m_Types.m_nKeyWordSetIdx[i];
 			auto_sprintf( szKeyName, szKeyKeywordTemp, i+1 );
-			wcscpy( buff, cKeyWordSetMgr.GetTypeName( nIdx ));
+			wcscpy_s( buff, cKeyWordSetMgr.GetTypeName( nIdx ));
 			cProfile.IOProfileData(szSecTypeEx, szKeyName, StringBufferW(buff));
 
 			// 大文字小文字区別
@@ -479,7 +479,7 @@ bool CImpExpType::Export( const wstring& sFileName, wstring& sErrMsg )
 			cImpExpKeyWord.SetBaseName( common.m_sSpecialKeyword.m_CKeyWordSetMgr.GetTypeName( nIdx ));
 
 			if ( cImpExpKeyWord.Export( cImpExpKeyWord.GetFullPath(), sTmpMsg ) ) {
-				wcscpy( szFileName, cImpExpKeyWord.GetFileName().c_str());
+				wcscpy_s( szFileName, cImpExpKeyWord.GetFileName().c_str());
 				auto_sprintf( szKeyName, szKeyKeywordFileTemp, i+1 );
 				if (cProfile.IOProfileData(szSecTypeEx, szKeyName, StringBufferW(szFileName))) {
 					files += wstring( L"\n" ) + cImpExpKeyWord.GetFileName();

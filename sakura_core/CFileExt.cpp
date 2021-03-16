@@ -81,8 +81,8 @@ bool CFileExt::AppendExtRaw( const WCHAR *pszName, const WCHAR *pszExt )
 	}
 	m_puFileExtInfo = p;
 
-	wcscpy( m_puFileExtInfo[m_nCount].m_szName, pszName );
-	wcscpy( m_puFileExtInfo[m_nCount].m_szExt, pszExt );
+	wcscpy_s( m_puFileExtInfo[m_nCount].m_szName, pszName );
+	wcscpy_s( m_puFileExtInfo[m_nCount].m_szExt, pszExt );
 	m_nCount++;
 
 	return true;

@@ -234,7 +234,7 @@ void CMruListener::_HoldBookmarks_And_AddToMRU()
 	pcDoc->GetEditInfo( &fi );
 
 	//ブックマーク情報の保存
-	wcscpy( fi.m_szMarkLines, CBookmarkManager(&pcDoc->m_cDocLineMgr).GetBookMarks() );
+	wcscpy_s( fi.m_szMarkLines, CBookmarkManager(&pcDoc->m_cDocLineMgr).GetBookMarks() );
 
 	//MRUリストに登録
 	CMRUFile	cMRU;

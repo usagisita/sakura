@@ -241,11 +241,11 @@ bool CDocFileOperation::SaveFileDialog(
 			// 基本
 			if (szExt[0] == L'\0') { 
 				// ファイルパスが無いまたは拡張子なし
-				wcscpy(szDefaultWildCard, L"*.txt");
+				wcscpy_s(szDefaultWildCard, L"*.txt");
 			}
 			else {
 				// 拡張子あり
-				wcscpy(szDefaultWildCard, L"*");
+				wcscpy_s(szDefaultWildCard, L"*");
 				wcscat(szDefaultWildCard, szExt);
 			}
 		}

@@ -76,7 +76,7 @@ bool CEditView::TagJumpSub(
 		GetInidirOrExedir( szJumpToFile, pszFileName );
 	}
 	else {
-		wcscpy( szJumpToFile, pszFileName );
+		wcscpy_s( szJumpToFile, pszFileName );
 	}
 
 	/* ロングファイル名を取得する */
@@ -131,7 +131,7 @@ bool CEditView::TagJumpSub(
 		EditInfo	inf;
 		bool		bSuccess;
 
-		wcscpy( inf.m_szPath, szJumpToFile );
+		wcscpy_s( inf.m_szPath, szJumpToFile );
 		inf.m_ptCursor.Set(CLogicInt(ptJumpTo.x - 1), CLogicInt(ptJumpTo.y - 1));
 		inf.m_nViewLeftCol = CLayoutInt(-1);
 		inf.m_nViewTopLine = CLayoutInt(-1);
