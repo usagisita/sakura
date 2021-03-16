@@ -126,5 +126,25 @@ private:
 	CHAR_TYPE m_szData[N_BUFFER_COUNT];
 };
 
+
+template <size_t DST_SIZE, size_t SRC_SIZE>
+inline errno_t wcscpy_fix(wchar_t (&dst)[DST_SIZE], const StaticString<WCHAR,SRC_SIZE>& src){
+	static_assert(SRC_SIZE <= DST_SIZE, "wcscpy_fix buffer size check error");
+	return wcscpy_s(dst, DST_SIZE, src);
+}
+
+template <size_t DST_SIZE, size_t SRC_SIZE>
+inline errno_t wcscpy_fix(StaticString<WCHAR,DST_SIZE>& dst, const wchar_t (&src)[SRC_SIZE]){
+	static_assert(SRC_SIZE <= DST_SIZE, "wcscpy_fix buffer size check error");
+	return wcscpy_s(dst, DST_SIZE, src);
+}
+
+template <size_t SIZE_TYPE>
+inline errno_t wcscpy_fix(StaticString<WCHAR,SIZE_TYPE>& dst, const StaticString<WCHAR,SIZE_TYPE>& src){
+	return wcscpy_s(dst, SIZE_TYPE, src);
+}
+
+
+
 #define _countof2(s) s.BUFFER_COUNT
 #endif /* SAKURA_STATICTYPE_54CC2BD5_4C7C_4584_B515_EF8C533B90EA_H_ */

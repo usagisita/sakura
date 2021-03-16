@@ -664,7 +664,7 @@ CDlgOpenFile_CommonFileDialog::CDlgOpenFile_CommonFileDialog()
 		szFile, _countof( szFile )
 	);
 	_wsplitpath( szFile, szDrive, szDir, NULL, NULL );
-	wcscpy( m_szInitialDir, szDrive );
+	wcscpy_fix( m_szInitialDir, szDrive );
 	wcscat( m_szInitialDir, szDir );
 
 	wcscpy( m_szDefaultWildCard, L"*.*" );	/*「開く」での最初のワイルドカード（保存時の拡張子補完でも使用される） */
