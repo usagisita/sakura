@@ -1500,7 +1500,7 @@ LRESULT CTabWnd::OnMouseMove( HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 		if( m_bListBtnHilighted )	// ボタンに入ってきた?
 		{
 			pszTip = szText;
-			wcscpy( szText, LS(STR_TABWND_LR_INFO) );
+			wcscpy_s_res( szText, LS(STR_TABWND_LR_INFO) );
 		}
 	}
 
@@ -1520,7 +1520,7 @@ LRESULT CTabWnd::OnMouseMove( HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 			{
 				if( !m_pShareData->m_Common.m_sTabBar.m_bTab_CloseOneWin )
 				{
-					wcscpy( szText, LS(STR_TABWND_CLOSETAB) );
+					wcscpy_s_res( szText, LS(STR_TABWND_CLOSETAB) );
 				}
 				else
 				{
@@ -1721,7 +1721,7 @@ void CTabWnd::TabWindowNotify( WPARAM wParam, LPARAM lParam )
 			TCITEM	tcitem;
 			WCHAR	szName[1024];
 
-			wcscpy( szName, LS(STR_NO_TITLE1) );
+			wcscpy_s_res( szName, LS(STR_NO_TITLE1) );
 
 			tcitem.mask    = TCIF_TEXT | TCIF_PARAM;
 			tcitem.pszText = szName;

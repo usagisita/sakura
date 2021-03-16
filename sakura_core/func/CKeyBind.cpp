@@ -191,7 +191,7 @@ int CKeyBind::CreateKeyBindList(
 				if( !pcFuncLookup->Funccode2Name(
 					iFunc,
 					szFuncNameJapanese, 255 )){
-					wcscpy( szFuncNameJapanese, LS(STR_ERR_DLGKEYBIND2) );
+					wcscpy_s_res( szFuncNameJapanese, LS(STR_ERR_DLGKEYBIND2) );
 				}
 				szFuncName[0] = LTEXT('\0'); /*"---unknown()--"*/
 
@@ -835,7 +835,7 @@ void CShareData::RefreshKeyAssignString(DLLSHAREDATA* pShareData)
 		KEYDATA* pKeydata = &pShareData->m_Common.m_sKeyBind.m_pKeyNameArr[i];
 
 		if ( KeyDataInit[i].m_nKeyNameId <= 0xFFFF ) {
-			wcscpy( pKeydata->m_szKeyName, LS( KeyDataInit[i].m_nKeyNameId ) );
+			wcscpy_s_res( pKeydata->m_szKeyName, LS( KeyDataInit[i].m_nKeyNameId ) );
 		}
 	}
 }

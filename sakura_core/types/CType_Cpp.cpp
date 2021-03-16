@@ -647,7 +647,7 @@ void CDocOutline::MakeFuncList_C( CFuncInfoArr* pcFuncInfoArr ,EOutlineType& nOu
 						{
 							nMode2 = M2_NAMESPACE_SAVE;
 							nItemLine = nLineCount + CLogicInt(1);
-							wcscpy(szItemName,LS(STR_OUTLINE_CPP_NONAME));
+							wcscpy_s_res(szItemName,LS(STR_OUTLINE_CPP_NONAME));
 						}
 					}
 					/*else*/ if( nMode2 == M2_FUNC_NAME_END )	// 2010.07.08 ryoji 上で条件変更したので行頭の else を除去

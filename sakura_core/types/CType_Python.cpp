@@ -518,7 +518,7 @@ void CDocOutline::MakeFuncList_python( CFuncInfoArr* pcFuncInfoArr )
 				szWord[ len ] = L'\0';
 			}
 			else {
-				wcscpy( szWord, LS(STR_OUTLINE_PYTHON_UNDEFINED) );
+				wcscpy_s_res( szWord, LS(STR_OUTLINE_PYTHON_UNDEFINED) );
 				len = 8;
 			}
 			if( nItemFuncId == 4  ){

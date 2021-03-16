@@ -1239,7 +1239,7 @@ void CDlgFuncList::SetListVB (void)
 		if( 1 == ((pcFuncInfo->m_nInfo >> 8) & 0x01) ){
 			// スタティック宣言(Static)
 			// 2006.12.12 Moca 末尾にスペース追加
-			wcscpy(szOption, LS(STR_DLGFNCLST_VB_STATIC));
+			wcscpy_s_res(szOption, LS(STR_DLGFNCLST_VB_STATIC));
 		}
 		switch ((pcFuncInfo->m_nInfo >> 4) & 0x0f) {
 			case 2  :	// プライベート(Private)
@@ -1256,40 +1256,40 @@ void CDlgFuncList::SetListVB (void)
 		int nInfo = pcFuncInfo->m_nInfo;
 		switch (nInfo & 0x0f) {
 			case 1:		// 関数(Function)
-				wcscpy(szType, LS(STR_DLGFNCLST_VB_FUNCTION));
+				wcscpy_s_res(szType, LS(STR_DLGFNCLST_VB_FUNCTION));
 				break;
 
 			// 2006.12.12 Moca ステータス→プロシージャに変更
 			case 2:		// プロシージャ(Sub)
-				wcscpy(szType, LS(STR_DLGFNCLST_VB_PROC));
+				wcscpy_s_res(szType, LS(STR_DLGFNCLST_VB_PROC));
 				break;
 
 			case 3:		// プロパティ 取得(Property Get)
-				wcscpy(szType, LS(STR_DLGFNCLST_VB_PROPGET));
+				wcscpy_s_res(szType, LS(STR_DLGFNCLST_VB_PROPGET));
 				break;
 
 			case 4:		// プロパティ 設定(Property Let)
-				wcscpy(szType, LS(STR_DLGFNCLST_VB_PROPLET));
+				wcscpy_s_res(szType, LS(STR_DLGFNCLST_VB_PROPLET));
 				break;
 
 			case 5:		// プロパティ 参照(Property Set)
-				wcscpy(szType, LS(STR_DLGFNCLST_VB_PROPSET));
+				wcscpy_s_res(szType, LS(STR_DLGFNCLST_VB_PROPSET));
 				break;
 
 			case 6:		// 定数(Const)
-				wcscpy(szType, LS(STR_DLGFNCLST_VB_CONST));
+				wcscpy_s_res(szType, LS(STR_DLGFNCLST_VB_CONST));
 				break;
 
 			case 7:		// 列挙型(Enum)
-				wcscpy(szType, LS(STR_DLGFNCLST_VB_ENUM));
+				wcscpy_s_res(szType, LS(STR_DLGFNCLST_VB_ENUM));
 				break;
 
 			case 8:		// ユーザ定義型(Type)
-				wcscpy(szType, LS(STR_DLGFNCLST_VB_TYPE));
+				wcscpy_s_res(szType, LS(STR_DLGFNCLST_VB_TYPE));
 				break;
 
 			case 9:		// イベント(Event)
-				wcscpy(szType, LS(STR_DLGFNCLST_VB_EVENT));
+				wcscpy_s_res(szType, LS(STR_DLGFNCLST_VB_EVENT));
 				break;
 
 			default:	// 未定義なのでクリア
