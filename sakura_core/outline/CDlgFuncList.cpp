@@ -1535,7 +1535,7 @@ void CDlgFuncList::SetTreeFile()
 		const SFileTreeItem& item = m_fileTreeSetting.m_aItems[i];
 		// item.m_szTargetPath => szPath メタ文字の展開
 		if( !CFileNameManager::ExpandMetaToFolder(item.m_szTargetPath, szPath, _countof(szPath)) ){
-			wcscpy_s(szPath, _countof(szPath), L"<Error:Long Path>");
+			wcscpy_fix(szPath, L"<Error:Long Path>");
 		}
 		// szPath => szPath2 <iniroot>展開
 		const WCHAR* pszFrom = szPath;
@@ -1543,7 +1543,7 @@ void CDlgFuncList::SetTreeFile()
 			CNativeW strTemp(pszFrom);
 			strTemp.Replace(L"<iniroot>", IniDirPath);
 			if( _countof(szPath2) <= strTemp.GetStringLength() ){
-				wcscpy_s(szPath2, _countof(szPath), L"<Error:Long Path>");
+				wcscpy_fix(szPath2, L"<Error:Long Path>");
 			}else{
 				wcscpy_s(szPath2, _countof(szPath), strTemp.GetStringPtr());
 			}
