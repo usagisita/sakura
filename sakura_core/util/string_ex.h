@@ -133,6 +133,9 @@ inline errno_t wcscpy_fix(wchar_t (&dst)[DST_SIZE], const wchar_t (&src)[SRC_SIZ
 // リソースから読み込むものをマークしておく
 #define wcscpy_s_res wcscpy_s
 
+// 出力サイズが可変長のものをマークしておく
+#define wcscpy_s_len wcscpy_s
+
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- //
 //        auto系（_UNICODE 定義に依存しない関数）              //
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- //

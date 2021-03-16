@@ -2048,8 +2048,9 @@ LRESULT CEditWnd::DispatchEvent(
 		// タイマーを使用してタイトルの変更を遅延する
 		if( m_pShareData->m_sFlags.m_bEditWndChanging ){
 			delete[] m_pszLastCaption;
-			m_pszLastCaption = new WCHAR[ ::wcslen((LPCWSTR)lParam) + 1 ];
-			::wcscpy( m_pszLastCaption, (LPCWSTR)lParam );	// 変更後のタイトルを記憶しておく
+			size_t size = ::wcslen((LPCWSTR)lParam) + 1;
+			m_pszLastCaption = new WCHAR[size];
+			wcscpy_s_len( m_pszLastCaption, size, (LPCWSTR)lParam );	// 変更後のタイトルを記憶しておく
 			::SetTimer( GetHwnd(), IDT_CAPTION, 50, NULL );
 			return 0L;
 		}

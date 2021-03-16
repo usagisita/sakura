@@ -211,7 +211,7 @@ LPCWSTR CBookmarkManager::GetBookMarks()
 			}
 			int nBuff2Len = wcslen(szBuff2);
 			if( nBuff2Len + nTextLen > MAX_MARKLINES_LEN ) break;	//2002.01.17
-			wcscpy( szText + nTextLen, szBuff2 );
+			wcscpy_s_len( szText + nTextLen, _countof(szText) - nTextLen, szBuff2 );
 			nTextLen += nBuff2Len;
 		}
 		nLinePos++;

@@ -97,7 +97,7 @@ BOOL CDlgInput1::DoModal(
 		CDlgInput1Proc,
 		(LPARAM)this
 	);
-	wcscpy( pszText, m_cmemText.GetStringPtr() );
+	wcscpy_s_len( pszText, nMaxTextLen + 1, m_cmemText.GetStringPtr() );
 	return bRet;
 }
 

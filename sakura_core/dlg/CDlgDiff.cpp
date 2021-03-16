@@ -106,7 +106,7 @@ int CDlgDiff::DoModal(
 	const WCHAR*		pszPath		//自ファイル
 )
 {
-	wcscpy(m_szFile1, pszPath);
+	wcscpy_s_len(m_szFile1, _countof2(m_szFile1), pszPath);
 
 	return (int)CDialog::DoModal( hInstance, hwndParent, IDD_DIFF, lParam );
 }

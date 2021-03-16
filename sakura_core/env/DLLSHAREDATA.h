@@ -96,8 +96,9 @@ struct SShare_Flags{
 struct SShare_WorkBuffer{
 	//2007.09.16 kobake char型だと、常に文字列であるという誤解を招くので、BYTE型に変更。変数名も変更。
 	//           UNICODE版では、余分に領域を使うことが予想されるため、ANSI版の2倍確保。
+	static constexpr int WORK_BUFFER_MAX_BYTE = 32000;
 private:
-	BYTE				m_pWork[32000*sizeof(WCHAR)];
+	BYTE				m_pWork[WORK_BUFFER_MAX_BYTE*sizeof(WCHAR)];
 public:
 	template <class T>
 	T* GetWorkBuffer(){ return reinterpret_cast<T*>(m_pWork); }

@@ -808,8 +808,8 @@ bool CImpExpKeyHelp::Import( const wstring& sFileName, wstring& sErrMsg )
 
 		//良さそうなら
 		m_Types.m_KeyHelpArr[i].m_bUse = (b_enable_flag!=0);	// 2007.02.03 genta
-		wcscpy(m_Types.m_KeyHelpArr[i].m_szAbout, p4);
-		wcscpy(m_Types.m_KeyHelpArr[i].m_szPath,  p3);
+		wcscpy_s(m_Types.m_KeyHelpArr[i].m_szAbout, p4);
+		wcscpy_s_len(m_Types.m_KeyHelpArr[i].m_szPath, _countof2(m_Types.m_KeyHelpArr[i].m_szPath), p3);
 		i++;
 	}
 	in.Close();

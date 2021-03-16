@@ -322,7 +322,7 @@ bool CBackupAgent::FormatBackUpPath(
 		CFileNameManager::ExpandMetaToFolder( bup_setting.m_szBackUpFolder, selDir, _countof(selDir) );
 		if (GetFullPathName(selDir, _MAX_PATH, szNewPath, &psNext) == 0) {
 			// うまく取れなかった
-			wcscpy( szNewPath, selDir );
+			wcscpy_s_len( szNewPath, newPathCount, selDir );
 		}
 		/* フォルダの最後が半角かつ'\\'でない場合は、付加する */
 		AddLastYenFromDirectoryPath( szNewPath );
@@ -488,7 +488,7 @@ bool CBackupAgent::FormatBackUpPath(
 			}
 			{
 				// $0-$9を置換
-				//wcscpy( szNewPath, L"" );
+				//wcscpy_s_len( szNewPath, newPathCount, L"" );
 				WCHAR *q = formatString.data();
 				WCHAR *q2 = q;
 				while( *q ){

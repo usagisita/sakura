@@ -1125,7 +1125,7 @@ int CShareData::GetMacroFilename( int idx, WCHAR *pszPath, int nBufLen )
 		if( pszPath == NULL || nBufLen <= nLen ){
 			return -nLen;
 		}
-		wcscpy( pszPath, pszFile );
+		wcscpy_s_len(pszPath, nBufLen, pszFile);
 		return nLen;
 	}
 	else {	//	フォルダ指定あり
@@ -1150,12 +1150,12 @@ int CShareData::GetMacroFilename( int idx, WCHAR *pszPath, int nBufLen )
 			return -nAllLen;
 		}
 
-		wcscpy( pszPath, pszDir );
+		wcscpy_s_len(pszPath, nBufLen, pszDir);
 		WCHAR *ptr = pszPath + nDirLen;
 		if( -1 == nFolderSep ){
 			*ptr++ = L'\\';
 		}
-		wcscpy( ptr, pszFile );
+		wcscpy_s_len(ptr, nBufLen - (ptr - pszPath), pszFile);
 		return nAllLen;
 	}
 }

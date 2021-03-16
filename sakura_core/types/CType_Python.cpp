@@ -527,7 +527,7 @@ void CDocOutline::MakeFuncList_python( CFuncInfoArr* pcFuncInfoArr )
 					len = _countof( szWord ) - 8;
 				}
 				// class
-				wcscpy( szWord + len, LS(STR_OUTLINE_PYTHON_CLASS) );
+				wcscpy_s_len(szWord + len, _countof(szWord) - len, LS(STR_OUTLINE_PYTHON_CLASS));
 			}
 			
 			/*

@@ -449,7 +449,7 @@ void CDlgOpenFile_CommonItemDialog::Create(
 		auto_sprintf( szRelPath, L"%s%s", szDrive, szDir );
 		const WCHAR* p = szRelPath;
 		if( ! ::GetLongFileName( p, m_szInitialDir ) ){
-			wcscpy(m_szInitialDir, p );
+			wcscpy_s_len(m_szInitialDir, _countof2(m_szInitialDir), p);
 		}
 	}
 	m_vMRU = vMRU;

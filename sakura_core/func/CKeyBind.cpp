@@ -449,7 +449,7 @@ WCHAR* CKeyBind::GetMenuLabel(
 		pszLabel[ LABEL_MAX - 1 ] = L'\0';
 	}
 	if( L'\0' == pszLabel[0] ){
-		wcscpy( pszLabel, L"-- undefined name --" );
+		wcscpy_s_len(pszLabel, LABEL_MAX, L"-- undefined name --" );
 	}
 	// アクセスキーの追加	2010/5/17 Uchi
 	wcsncpy_s( pszLabel, LABEL_MAX, MakeMenuLabel( pszLabel, pszKey ), _TRUNCATE );

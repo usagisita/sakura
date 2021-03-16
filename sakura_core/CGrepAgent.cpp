@@ -1193,7 +1193,8 @@ int CGrepAgent::DoGrepFile(
 			X / O  :                  (D)Folder(Abs) -> (G)RelPath(File)
 			X / X  : (H)FullPath
 */
-			auto pszWork = std::make_unique<wchar_t[]>(wcslen(pszFullPath) + wcslen(pszCodeName) + 10);
+			size_t nWorkSize = wcslen(pszFullPath) + wcslen(pszCodeName) + 10;
+			auto pszWork = std::make_unique<wchar_t[]>(nWorkSize);
 			wchar_t* szWork0 = &pszWork[0];
 			if( sGrepOption.bGrepOutputBaseFolder || sGrepOption.bGrepSeparateFolder ){
 				if( !bOutputBaseFolder && sGrepOption.bGrepOutputBaseFolder ){
@@ -1211,7 +1212,7 @@ int CGrepAgent::DoGrepFile(
 					if( pszFolder[0] ){
 						auto_sprintf( szWork0, L"■\"%s\"\r\n", pszFolder );	// (C), (D)
 					}else{
-						wcscpy( szWork0, L"■\r\n" );
+						wcscpy_s_len( szWork0, nWorkSize, L"■\r\n" );
 					}
 					cmemMessage.AppendString( szWork0 );
 					bOutputFolderName = true;
